@@ -5,7 +5,7 @@
 
 title: Daniel Fryer # Website name
 baseurl: 'https://danielvfryer3.netlify.app/' # Website URL
-copyright: '© {2021} Daniel Fryer' # Footer text, e.g. '© {year} Me'
+copyright: '© {year} Daniel Fryer' # Footer text, e.g. '© {year} Me'
 
 ############################
 ## LANGUAGE
