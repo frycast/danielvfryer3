@@ -21,7 +21,7 @@ feature:
   icon_pack: custom
   name: R
 - description: 
-  icon: python-powered
+  icon: python-language
   icon_pack: custom
   name: Python
 - icon: julia-dots
