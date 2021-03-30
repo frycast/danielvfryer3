@@ -40,6 +40,9 @@ feature:
 - icon: database
   icon_pack: fas
   name: SQL
+- icon: julia-dots
+  icon_pack: custom
+  name: Julia
 
 # Uncomment to use emoji icons.
 #- icon: ":smile:"
