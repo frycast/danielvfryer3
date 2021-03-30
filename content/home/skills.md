@@ -17,10 +17,6 @@ subtitle:
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
 - description: 
-  icon: chart-line
-  icon_pack: fas
-  name: Statistics
-- description: 
   icon: Rlogo
   icon_pack: custom
   name: R
@@ -31,6 +27,10 @@ feature:
 - icon: julia-dots
   icon_pack: custom
   name: Julia
+- description: 
+  icon: chart-line
+  icon_pack: fas
+  name: Statistics
 - icon: chalkboard-teacher
   icon_pack: fas
   name: Teaching
