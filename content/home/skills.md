@@ -25,18 +25,21 @@ feature:
   icon_pack: fas
   name: Statistics
 - description: 
-  icon = python
-  icon_pack = fab
-  name = Python
-- icon = chalkboard-teacher
-  icon_pack = fas
-  name = Teaching
-- icon = infinity
-  icon_pack = fas
-  name = Mathematics
-- icon = laptop-code
-  icon_pack = fas
-  name = Machine Learning
+  icon: python
+  icon_pack: fab
+  name: Python
+- icon: chalkboard-teacher
+  icon_pack: fas
+  name: Teaching
+- icon: infinity
+  icon_pack: fas
+  name: Mathematics
+- icon: laptop-code
+  icon_pack: fas
+  name: Machine Learning
+- icon: database
+  icon_pack: fas
+  name: SQL
 
 # Uncomment to use emoji icons.
 #- icon: ":smile:"
