@@ -77,12 +77,13 @@ email: "danielvfryer@gmail.com"
 highlight_name: false
 ---
 
-Complex data analyses are used in every industry and scientific field, but so often with results that are hard to interpret and unintuitive. I aim to increase the transparency of complex models - making them understandable and explainable - through research at the forefront of explainable AI, as well as through teaching and communication in general. I enjoy writing code (including software packages and libraries) in R, Python, Julia and SQL. I enjoy theoretical work, and I always want to apply theoretical methods to overcome real world challenges. Aside from research, I practice relational database design, data integration, software engineering, and I teach various courses in both statistics and computer science. I currently serve as a council member and Communications Officer at the Statistical Society of Australia.
+Complicated data analyses are used in every industry and scientific field, but increasingly with opaque results that are hard to explain and interpret. I work to increase the transparency, honesty, and clarity of complex data analyses, through research, teaching, and public communication. I enjoy writing software in R, Python, Julia and SQL. My research is in the intersection of theoretical and applied statistics and machine learning. Aside from stats and programming languages, I'm currently interested in learning more psychology, anthropology and economics.
 
-Lately, I've been working at The University of Queensland, La Trobe University and Monash University, in various roles as a sessional lecturer and research assistant. I'm currently teaching meta-analysis, database design and other postgraduate data science courses. I authored and maintain an SQL crash course that I teach twice per year in New Zealand, targeted at academic and industry professionals, for the New Zealand Social Statistics Network at The University of Auckland (and you can access the free materials at [github.com/frycast/SQL_Course](https://github.com/frycast/SQL_Course)).
+Aside from research, I practice relational database design, data integration, and software engineering. I also teach various courses in statistics and computer science at a postgraduate level. I currently serve as a council member and Deputy Communications Officer at the Statistical Society of Australia and technical sub-editor at the Australian & New Zealand Journal of Statistics.
+
+Take a look at the material for my SQL crash course, that I teach twice per year in New Zealand, targeted at academic and industry professionals, for the New Zealand Social Statistics Network at The University of Auckland. Access the free materials at [github.com/frycast/SQL_Course](https://github.com/frycast/SQL_Course).
 
 Fill out the contact form below if you'd like to get in touch. 
-I'm always open to learning, teaching and working together. 
-I can also mention things to the SSA Vic council if you have any questions or desires to pass on.
+I'm always open to learning, teaching and working together.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
