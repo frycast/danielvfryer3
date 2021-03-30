@@ -77,7 +77,7 @@ email: "danielvfryer@gmail.com"
 highlight_name: false
 ---
 
-Complicated data analyses are used in every industry and scientific field, but increasingly with opaque results that are hard to explain and interpret. I work to increase the transparency, honesty, and clarity of complex data analyses, through research, teaching, software tooling and public communication. My research is in the intersection of theoretical and applied statistics and machine learning, but I'm interested in learning more psychology, anthropology and economics.
+Complicated data analyses are used in every industry and scientific field, but increasingly with opaque results that are hard to explain and interpret. I work to increase the transparency, honesty, and clarity of complex data analyses, through research, teaching, software tooling and public communication. My research is in the intersection of theoretical and applied statistics and machine learning, but I'm interested in growing my knowledge in psychology, anthropology, economics and agriculture.
 
 Aside from research, I enjoy coding in R, Python, Julia and SQL, and I practice relational database design, data integration, and software engineering. I also teach various courses in statistics and computer science at a postgraduate level, including meta-analysis and relational database design. I currently serve as a council member and Deputy Communications Officer at the Statistical Society of Australia, as well as technical sub-editor at the Australian & New Zealand Journal of Statistics.
 
