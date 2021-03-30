@@ -77,11 +77,11 @@ email: "danielvfryer@gmail.com"
 highlight_name: false
 ---
 
-Complicated data analyses are used in every industry and scientific field, but increasingly with opaque results that are hard to explain and interpret. I work to increase the transparency, honesty, and clarity of complex data analyses, through research, teaching, software and public communication. I enjoy writing software in R, Python, Julia and SQL. My research is in the intersection of theoretical and applied statistics and machine learning. Aside from stats and advanced programming, I'm currently interested in learning more psychology, anthropology and economics.
+Complicated data analyses are used in every industry and scientific field, but increasingly with opaque results that are hard to explain and interpret. I work to increase the transparency, honesty, and clarity of complex data analyses, through research, teaching, software tooling and public communication. My research is in the intersection of theoretical and applied statistics and machine learning, but I'm interested in learning more psychology, anthropology and economics.
 
-Aside from research, I practice relational database design, data integration, and software engineering. I also teach various courses in statistics and computer science at a postgraduate level. I currently serve as a council member and Deputy Communications Officer at the Statistical Society of Australia, as well as technical sub-editor at the Australian & New Zealand Journal of Statistics.
+Aside from research, I enjoy coding in R, Python, Julia and SQL, and I practice relational database design, data integration, and software engineering. I also teach various courses in statistics and computer science at a postgraduate level, including meta-analysis and relational database design. I currently serve as a council member and Deputy Communications Officer at the Statistical Society of Australia, as well as technical sub-editor at the Australian & New Zealand Journal of Statistics.
 
-Take a look at the material for my SQL crash course, that I teach twice per year in New Zealand, targeted at academic and industry professionals, for the New Zealand Social Statistics Network at The University of Auckland: [github.com/frycast/SQL_Course](https://github.com/frycast/SQL_Course).
+Take a look at the material for my SQL crash course. It is targeted at academic and industry professionals. I teach the course twice per year, both online and in New Zealand, for the New Zealand Social Statistics Network, at The University of Auckland: github.com/frycast/SQL_Course
 
 Fill out the contact form below if you'd like to get in touch. 
 I'm always open to learning, teaching and working together.
