@@ -6,7 +6,7 @@ title: Daniel Vidali Fryer
 superuser: true
 
 # Role/position/tagline
-role: Statistics PhD / Lecturer / Independent Consultant
+role: Statistics PhD / Lecturer / Independent consultant
 
 # Organizations/Affiliations to show in About widget
 organizations:
@@ -23,8 +23,10 @@ interests:
 - Statistics
 - Mathematics
 - Explainability
-- Interpretable Machine Learning
-- Research Software Engineering
+- Interpretability
+- Experiments
+- Causality
+- Software tooling
 
 # Education to show in About widget
 education:
@@ -79,7 +81,7 @@ highlight_name: false
 
 Complicated data analyses are used in every industry and scientific field, but increasingly with opaque results that are hard to explain and interpret. I work to increase the transparency, honesty, and clarity of complex data analyses, through research, teaching, software tooling and public communication. My research is in the intersection of theoretical and applied statistics and machine learning, but I'm interested in growing my knowledge in psychology, anthropology, economics and agriculture.
 
-Aside from research, I enjoy coding in R, Python, Julia and SQL, and I practice relational database design, data integration, and software engineering. I also teach various courses in statistics and computer science at a postgraduate level, including meta-analysis and relational database design. I currently serve as a council member and Deputy Communications Officer at the Statistical Society of Australia, as well as technical sub-editor at the Australian & New Zealand Journal of Statistics.
+Aside from research, I enjoy coding in R, Python, Julia and SQL, I practice software engineering techniques and data integration, and I teach various courses in both statistics and computer science at a postgraduate level, including meta-analysis and database design. I currently serve as a council member and Deputy Communications Officer at the Statistical Society of Australia, as well as technical sub-editor at the Australian & New Zealand Journal of Statistics.
 
 Take a look at the material for my SQL crash course. It is targeted at academic and industry professionals. I teach the course twice per year, both online and in New Zealand, for the New Zealand Social Statistics Network, at The University of Auckland: github.com/frycast/SQL_Course
 

@@ -17,17 +17,20 @@ subtitle:
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
 - description: 
-  icon: r-project
-  icon_pack: fab
-  name: R
-- description: 
   icon: chart-line
   icon_pack: fas
   name: Statistics
 - description: 
+  icon: r-project
+  icon_pack: fab
+  name: R
+- description: 
   icon: python
   icon_pack: fab
   name: Python
+- icon: julia-dots
+  icon_pack: custom
+  name: Julia
 - icon: chalkboard-teacher
   icon_pack: fas
   name: Teaching
@@ -40,9 +43,6 @@ feature:
 - icon: database
   icon_pack: fas
   name: SQL
-- icon: julia-dots
-  icon_pack: custom
-  name: Julia
 
 # Uncomment to use emoji icons.
 #- icon: ":smile:"
