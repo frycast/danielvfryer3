@@ -86,4 +86,4 @@ Take a look at the material for my SQL crash course. It is targeted at academic 
 Fill out the contact form below if you'd like to get in touch. 
 I'm always open to learning, teaching and working together.
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "https://github.com/frycast/cv/raw/master/cv/cv.pdf" "newtab" >}}resumé{{< /staticref >}}.
