@@ -1,39 +1,40 @@
 ---
 # Display name
-title: Nelson Bighetti
+title: Daniel Vidali Fryer
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Professor of Artificial Intelligence
+role: PhD Candidate / Sessional Lecturer / Consultant
 
 # Organizations/Affiliations to show in About widget
 organizations:
-- name: Stanford University
-  url: https://www.stanford.edu/
+- name: The University of Queensland
+  url:
+- name: La Trobe University
+  url:
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests are in clear and honest communication of uncertainty
 
 # Interests to show in About widget
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Statistics
+- Mathematics
+- Explainability
+- Interpretable Machine Learning
+- Research Software Engineering
 
 # Education to show in About widget
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: PhD in Statistics
+    institution: The University of Queensland
+    year: Current
+  - course: Bachelor of Science, First Class Honours
+    institution: La Trobe University
+    year: 2018
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -42,36 +43,46 @@ education:
 social:
 - icon: envelope
   icon_pack: fas
-  link: '/#contact'
+  link: '#contact'  # For a direct email link, use "mailto:test@example.org".
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
-- icon: graduation-cap  # Alternatively, use `google-scholar` icon from `ai` icon pack
-  icon_pack: fas
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://twitter.com/_frycast
+- icon: google-scholar
+  icon_pack: ai
+  link: https://scholar.google.co.uk/citations?user=DBWm9DYAAAAJ
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/frycast
+- icon: orcid
+  icon_pack: ai
+  link: https://orcid.org/0000-0001-6032-0522
 - icon: linkedin
   icon_pack: fab
-  link: https://www.linkedin.com/
+  link: https://linkedin.com/in/dvfryer
+- icon: medium
+  icon_pack: fab
+  link: https://medium.com/@danielvfryer
 
 # Link to a PDF of your resume/CV.
 # To use: copy your resume to `static/media/resume.pdf`, enable `ai` icons in `params.toml`, 
 # and uncomment the lines below.
-# - icon: cv
-#   icon_pack: ai
-#   link: media/resume.pdf
+- icon: cv
+  icon_pack: ai
+  link: https://github.com/frycast/cv/raw/master/cv/cv.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: ""
+email: "danielvfryer@gmail.com"
 
 # Highlight the author in author lists? (true/false)
 highlight_name: false
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Complex data analyses are used in every industry and scientific field, but so often with results that are hard to interpret and unintuitive. I aim to increase the transparency of complex models - making them understandable and explainable - through research at the forefront of explainable AI, as well as through teaching and communication in general. I enjoy writing code (including software packages and libraries) in R, Python, Julia and SQL. I enjoy theoretical work, and I always want to apply theoretical methods to overcome real world challenges. Aside from research, I practice relational database design, data integration, software engineering, and I teach various courses in both statistics and computer science. I currently serve as a council member and Communications Officer at the Statistical Society of Australia.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+Lately, I've been working at The University of Queensland, La Trobe University and Monash University, in various roles as a sessional lecturer and research assistant. I'm currently teaching meta-analysis, database design and other postgraduate data science courses. I authored and maintain an SQL crash course that I teach twice per year in New Zealand, targeted at academic and industry professionals, for the New Zealand Social Statistics Network at The University of Auckland (and you can access the free materials at [github.com/frycast/SQL_Course](https://github.com/frycast/SQL_Course)).
+
+Fill out the contact form below if you'd like to get in touch. 
+I'm always open to learning, teaching and working together. 
+I can also mention things to the SSA Vic council if you have any questions or desires to pass on.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "media/demo_resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
