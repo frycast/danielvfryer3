@@ -21,8 +21,8 @@ feature:
   icon_pack: fas
   name: Statistics
 - description: 
-  icon: r-project
-  icon_pack: fab
+  icon: Rlogo
+  icon_pack: custom
   name: R
 - description: 
   icon: python
