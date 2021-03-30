@@ -79,7 +79,7 @@ highlight_name: false
 
 Complicated data analyses are used in every industry and scientific field, but increasingly with opaque results that are hard to explain and interpret. I work to increase the transparency, honesty, and clarity of complex data analyses, through research, teaching, software and public communication. I enjoy writing software in R, Python, Julia and SQL. My research is in the intersection of theoretical and applied statistics and machine learning. Aside from stats and advanced programming, I'm currently interested in learning more psychology, anthropology and economics.
 
-Aside from research, I practice relational database design, data integration, and software engineering. I also teach various courses in statistics and computer science at a postgraduate level. I currently serve as a council member and Deputy Communications Officer at the Statistical Society of Australia and technical sub-editor at the Australian & New Zealand Journal of Statistics.
+Aside from research, I practice relational database design, data integration, and software engineering. I also teach various courses in statistics and computer science at a postgraduate level. I currently serve as a council member and Deputy Communications Officer at the Statistical Society of Australia, as well as technical sub-editor at the Australian & New Zealand Journal of Statistics.
 
 Take a look at the material for my SQL crash course, that I teach twice per year in New Zealand, targeted at academic and industry professionals, for the New Zealand Social Statistics Network at The University of Auckland. Access the free materials at [github.com/frycast/SQL_Course](https://github.com/frycast/SQL_Course).
 
