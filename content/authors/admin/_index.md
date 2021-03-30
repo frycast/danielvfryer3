@@ -6,7 +6,7 @@ title: Daniel Vidali Fryer
 superuser: true
 
 # Role/position/tagline
-role: PhD Candidate / Sessional Lecturer / Consultant
+role: PhD Candidate / Lecturer / Independent Consultant
 
 # Organizations/Affiliations to show in About widget
 organizations:
