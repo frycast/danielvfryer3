@@ -81,7 +81,7 @@ Complicated data analyses are used in every industry and scientific field, but i
 
 Aside from research, I practice relational database design, data integration, and software engineering. I also teach various courses in statistics and computer science at a postgraduate level. I currently serve as a council member and Deputy Communications Officer at the Statistical Society of Australia, as well as technical sub-editor at the Australian & New Zealand Journal of Statistics.
 
-Take a look at the material for my SQL crash course, that I teach twice per year in New Zealand, targeted at academic and industry professionals, for the New Zealand Social Statistics Network at The University of Auckland. Access the free materials at [github.com/frycast/SQL_Course](https://github.com/frycast/SQL_Course).
+Take a look at the material for my SQL crash course, that I teach twice per year in New Zealand, targeted at academic and industry professionals, for the New Zealand Social Statistics Network at The University of Auckland: [github.com/frycast/SQL_Course](https://github.com/frycast/SQL_Course).
 
 Fill out the contact form below if you'd like to get in touch. 
 I'm always open to learning, teaching and working together.
