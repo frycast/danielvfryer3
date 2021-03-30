@@ -45,7 +45,7 @@ feature:
   name: SQL
 - icon: microscope
   icon_pack: fas
-  name: research
+  name: Research
 
 # Uncomment to use emoji icons.
 #- icon: ":smile:"
