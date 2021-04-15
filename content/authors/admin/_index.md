@@ -31,10 +31,10 @@ interests:
 # Education to show in About widget
 education:
   courses:
-  - course: PhD in Statistics
+  - course: PhD (Statistics)
     institution: The University of Queensland
     year: Current
-  - course: Bachelor of Science, First Class Honours
+  - course: BSc (Honours 1st Class, College Medal in Science)
     institution: La Trobe University
     year: 2018
 
