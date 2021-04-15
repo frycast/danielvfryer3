@@ -22,8 +22,7 @@ bio: My research interests are in clear and honest communication of uncertainty
 interests:
 - Statistics
 - Mathematics
-- Explainability
-- Interpretability
+- Uncertainty
 - Experiments
 - Causality
 - Software tooling
