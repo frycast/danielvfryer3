@@ -78,7 +78,9 @@ email: "danielvfryer@gmail.com"
 highlight_name: false
 ---
 
-Complicated data analyses are used in every industry and scientific field, but increasingly with opaque results that are hard to explain and interpret. I work to increase the transparency, honesty, and clarity of complex data analyses, through research, teaching, software tooling and public communication. My research is in the intersection of theoretical and applied statistics and machine learning, but I'm interested in growing my knowledge in psychology, anthropology, economics and agriculture.
+Data analyses are increasingly being conducted with complicated or 'black box' models, producing results that are hard to explain and interpret. I work to develop transparency, honesty, and clarity in knowledge discovery processes, through research, teaching, software tools (including unit testing) and communication. 
+
+Through my PhD I am accidentally becoming an expert in a thing called the Shapley value. I'm also interested (though not an expert) in mental health, precision medicine, scientific integrity, communication of uncertainty, sustainable development and microalgae.
 
 Aside from research, I enjoy coding in R, Python, Julia and SQL, I practice software engineering techniques and data integration, and I teach various courses in both statistics and computer science at a postgraduate level, including meta-analysis and database design. I currently serve as a council member and Deputy Communications Officer at the Statistical Society of Australia, as well as technical sub-editor at the Australian & New Zealand Journal of Statistics.
 
