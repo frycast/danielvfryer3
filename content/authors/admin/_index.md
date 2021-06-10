@@ -78,7 +78,7 @@ email: "danielvfryer@gmail.com"
 highlight_name: false
 ---
 
-Data analyses are increasingly being conducted with complicated, or 'black box', models. These models produce results that are hard to explain and interpret. I work to develop transparency, honesty, and clarity in knowledge discovery processes, through research, teaching, software tools (including unit testing) and communication.
+Data analyses are increasingly being conducted with complicated, or 'black box', models. These models produce results that are hard to explain and interpret. I work to develop transparency, honesty, and clarity in knowledge discovery processes, through research, teaching, software tools and communication.
 
 Through my PhD I am accidentally becoming an expert in a thing called the Shapley value. I'm also interested (though not an expert) in mental health, precision medicine, scientific integrity, communication of uncertainty, sustainable development and microalgae.
 
