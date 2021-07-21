@@ -1,9 +1,11 @@
 ---
-title: Welcome to Wowchemy, the website builder for Hugo
-subtitle: Welcome 👋 We know that first impressions are important, so we've populated your new site with some initial content to help you get familiar with everything in no time.
+title: I'll post here soon!
+subtitle: Hi 👋, I'm planning to get into some light blogging on subjects
+related to my research. Check back later!
 
 # Summary for listings and search engines
-summary: Welcome 👋 We know that first impressions are important, so we've populated your new site with some initial content to help you get familiar with everything in no time.
+summary: Hi 👋, I'm planning to get into some light blogging on subjects
+related to my research. Check back later!
 
 # Link this post with a project
 projects: []
@@ -23,7 +25,7 @@ featured: false
 # Featured image
 # Place an image named `featured.jpg/png` in this page's folder and customize its options here.
 image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/CpkOjOcXdUY)'
+  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/uKlneQRwaxY)'
   focal_point: ""
   placement: 2
   preview_only: false
