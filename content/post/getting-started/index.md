@@ -1,10 +1,10 @@
 ---
 title: I'll post here soon!
-subtitle: Hi 👋, I'm planning to get into some light blogging on subjects
+subtitle: Hi 👋, I'm planning to get into some light blogging on subjects  
 related to my research. Check back later!
 
 # Summary for listings and search engines
-summary: Hi 👋, I'm planning to get into some light blogging on subjects
+summary: Hi 👋, I'm planning to get into some light blogging on subjects  
 related to my research. Check back later!
 
 # Link this post with a project
