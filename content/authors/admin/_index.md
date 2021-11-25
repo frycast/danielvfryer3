@@ -78,15 +78,12 @@ email: "danielvfryer@gmail.com"
 highlight_name: false
 ---
 
-Data analyses are increasingly being conducted with complicated, or 'black box', models. These models produce results that are hard to explain and interpret. I work to develop transparency, honesty, and clarity in scientific knowledge discovery, through research, teaching, software tools and communication.
-
 I’m an early career PhD data scientist, and I’m in the rare position of having combined a rigorous understanding of applied statistics with strong skills in computer science, software engineering, and collaboration on technical projects. I have worked independently, as a researcher, project leader, and software developer, on multiple large exploratory and confirmatory analysis projects, and on research software development projects. I am great at working in messy unprocessed “big” data scenarios, involving local and cloud based SQL database management systems. I liaise with statisticians, scientists, medical professionals, and executives, and I work with local and international partners, to deliver analysis and pre-processing pipelines that deliver security, confidentiality, interactivity / usability, modularity / reusability, documentation, collaboration, and machine learning / statistical rigour.
 
-I have written a handful of private and open source R packages, two of which are currently on CRAN. I teach meta‑analysis to Master’s students, and I teach database design and SQL programming to professional statisticians and social scientists. I also currently serve as a council member and deputy Communications Officer at the Statistical Society of Australia, as well as technical sub‑editor at the Australian & New Zealand Journal of Statistics. In my spare time I enjoy being a dad, camping, video games, exercise, tasty food, good conversation, and hobby programming in a variety of languages including Julia, Python, Java, Javascript, and C++.
+I have written a handful of private and open source R packages, two of which are currently on CRAN. I teach meta‑analysis to Master’s students, and I teach database design and SQL programming to professional statisticians and social scientists. I also currently serve as a council member and executive privacy Officer at the Statistical Society of Australia, as well as technical sub‑editor at the Australian & New Zealand Journal of Statistics. In my spare time I enjoy being a dad, camping, video games, exercise, tasty food, good conversation, and hobby programming in a variety of languages including Julia, Python, Java, Javascript, and C++.
 
-Take a look at the material for my SQL crash course. It is targeted at academic and industry professionals. I teach the course twice per year, both online and in New Zealand, for the New Zealand Social Statistics Network, at The University of Auckland: github.com/frycast/SQL_Course
+Take a look at the material for my Intro to SQL course. You'll find thoughtful explanations, covering more than a typical beginner course, with many exercises and helpful diagrams. I've incorporated experiences over 4 years of university teaching, industry consulting, and many workshops, in Australia and New Zealand. github.com/frycast/SQL_Course
 
-Fill out the contact form below if you'd like to get in touch. 
-I'm always open to learning, teaching and working together.
+Fill out the contact form below if you'd like to get in touch.
 
 {{< icon name="download" pack="fas" >}} Download my {{< staticref "https://github.com/frycast/cv/raw/master/cv/cv.pdf" "newtab" >}}resumé{{< /staticref >}}.
