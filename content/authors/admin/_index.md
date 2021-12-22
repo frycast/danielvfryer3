@@ -78,13 +78,23 @@ email: "danielvfryer@gmail.com"
 highlight_name: false
 ---
 
-I’m an early career PhD data scientist, and I’m in the rare position of having combined a rigorous understanding of applied statistics with strong skills in computer science, software engineering, and collaboration on technical projects. 
+I’m an early career PhD data scientist, and I’m in the rare position of having combined a rigorous understanding of applied statistics with strong skills in computer science, software engineering, and collaboration on technical projects. I have worked independently, as a researcher, project leader and software developer, on multiple large exploratory and confirmatory analysis projects, and on research software development projects. I am great at working in messy unprocessed data scenarios, involving local and cloud based SQL database management systems. I liaise with statisticians, scientists, medical professionals, and executives, and I work with local and international partners, to deliver analysis and pre-processing pipelines that deliver security, confidentiality, interactivity / usability, modularity / reusability, documentation, collaboration, and machine learning / statistical rigour.
 
-I have worked independently, as a researcher, project leader, and software developer, on multiple large exploratory and confirmatory analysis projects, and on research software development projects. I am great at working in messy unprocessed data scenarios, involving local and cloud based SQL database management systems. I liaise with statisticians, scientists, medical professionals, and executives, and I work with local and international partners, to deliver analysis and pre-processing pipelines that deliver security, confidentiality, interactivity / usability, modularity / reusability, documentation, collaboration, and machine learning / statistical rigour.
+My long-term research interests include (1) the practical interactions between decision making, interpretation and uncertainty, involving Stats/ML/AI models; and, (2) effective collaboration between teams of analysts, engineers and scientists on collections of large heterogeneous datasets.
 
-I have written a handful of private and open source R packages, two of which are currently on CRAN. I teach meta‑analysis to Master’s students, and I teach database design and SQL programming to professional statisticians and social scientists. I also currently serve as a council member and executive privacy officer at the Statistical Society of Australia, as well as technical sub‑editor at the Australian & New Zealand Journal of Statistics. In my spare time I enjoy being a dad, camping, video games, exercise, tasty food, good conversation, and hobby programming in a variety of languages including Julia, Python, Java, Javascript, and C++.
+I have written a handful of private and open source R packages, two of which are currently on CRAN. I teach meta‑analysis to Master’s students, and database design / SQL programming to professional statisticians and social scientists. I also currently serve as a council member, executive privacy officer, and database administrator at the Statistical Society of Australia, as well as technical sub‑editor at the Australian & New Zealand Journal of Statistics. In my spare time I enjoy being a dad, camping, video games, exercise, tasty food, good conversation, and hobby programming (in R, Julia and Python, in that order).
 
-Take a look at the material for my Intro to SQL course. You'll find thoughtful explanations, covering more than a typical beginner course, with many exercises and helpful diagrams. I've incorporated experiences over 4 years of university teaching, industry consulting, and many workshops, in Australia and New Zealand. github.com/frycast/SQL_Course
+My Intro SQL course is targeted at academic and industry professionals. I deliver it twice yearly, for the NZSSN, at The University of Auckland, as well as the Statistical Society of Australia: github.com/frycast/SQL_Course
+
+----------------------------------------------------------
+
+"Uncertainty is not an accident of the scientific method, but its substance" — Andrea Saltelli.
+
+"An approximate answer to the right problem is worth a good deal more than an exact answer to an approximate problem" — John Tukey.
+
+"Whenever there is a simple error that most laymen fall for, there is always a slightly more sophisticated version of the same problem that experts fall for." - Amos Tverski
+
+----------------------------------------------------------
 
 Fill out the contact form below if you'd like to get in touch.
 
