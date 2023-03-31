@@ -16,7 +16,7 @@ organizations:
   url:
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests are in clear and honest communication of uncertainty
+bio: Most of my current research is in explainable AI, though I'm most interested in (1) relationships between uncertainty and decision making in Stats/ML/AI; (2) effective collaboration between teams of people on hard or complex tasks; and (3) intellectual integrity, education and healthy incentive schemes.
 
 # Interests to show in About widget
 interests:
