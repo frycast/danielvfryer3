@@ -6,7 +6,7 @@ title: Daniel Vidali Fryer
 superuser: true
 
 # Role/position/tagline
-role: Statistics PhD / Lecturer / Independent consultant
+role: PhD Data Scientist / Assoc. Lecturer / Freelancer / AFHEA
 
 # Organizations/Affiliations to show in About widget
 organizations:
