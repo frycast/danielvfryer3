@@ -20,12 +20,11 @@ bio: Most of my current research is in explainable AI, though I'm most intereste
 
 # Interests to show in About widget
 interests:
-- Statistics
-- Mathematics
-- Uncertainty
-- Experiments
-- Causality
-- Software tooling
+- Stats/AI/ML
+- Coding and development
+- Uncertainty and decisions
+- Hard collaboration
+- Education and incentives
 
 # Education to show in About widget
 education:
