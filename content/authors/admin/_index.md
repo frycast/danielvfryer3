@@ -30,7 +30,7 @@ interests:
 # Education to show in About widget
 education:
   courses:
-  - course: PhD (Statistics)
+  - course: PhD (Statistics/ML/AI)
     institution: The University of Queensland
     year: Current
   - course: BSc (Honours 1st Class, College Medal in Science)
@@ -78,13 +78,21 @@ email: "danielvfryer@gmail.com"
 highlight_name: false
 ---
 
-I'm an early career PhD data analyst, scientist and software engineer. I'm in the rare position of having combined a rigorous understanding of applied statistics with strong skills in computer science, software engineering, and collaboration on technical projects. I have worked independently, as a researcher, project leader and software developer, on multiple large exploratory and confirmatory analysis projects, and on research software development projects. I am great at working in messy unprocessed data scenarios, involving local and cloud based SQL database management systems. I liaise with statisticians, scientists, medical professionals, and executives, and I work with local and international partners, to deliver analysis and pre-processing pipelines that deliver security, confidentiality, interactivity / usability, modularity / reusability, documentation, collaboration, and machine learning / statistical rigour.
+I've worked as a researcher, project leader and developer, on large industry and academic projects, with other developers, scientists, domain experts, various stakeholders, executives, and statisticians, locally, remotely and across international borders.
 
-My long-term research interests include (1) the practical interactions between decision making, interpretation and uncertainty, involving Stats/ML/AI models; and, (2) effective collaboration between teams of analysts, engineers and scientists on collections of large heterogeneous datasets.
+I'm fortunate to be satisfying my curiosity daily, with impressive people, bringing to the table my natural eye for detail, software engineering skills, passion for knowledge sharing, data and process architecture, and a rigorous understanding of statistics, machine learning and AI.
 
-I have written a handful of private and open source R packages, two of which are currently on CRAN. I teach meta-analysis to Master's students, and database design / SQL programming to professional statisticians and social scientists. I'm an Associate Fellow of the Higher Education Academy, and I serve as a council member, executive privacy officer, and database administrator at the Statistical Society of Australia, as well as technical sub-editor at the Australian & New Zealand Journal of Statistics. In my spare time I enjoy being a dad, camping, video games, exercise, tasty food, good conversation, and hobby programming (in R, Julia and Python, in that order).
+I enjoy making clean work of messy processes, involving multiple teams and interfaces, complicated risks, integrated data sources, tricky problems, SQL databases, and complex modelling. I think in terms of end-to-end processes and analyses that deliver stable and reliable tools and insights.
 
-My Intro SQL course is targeted at academic and industry professionals. You'll find thoughtful explanations, covering more than a typical beginner course, with many exercises and helpful diagrams. I've incorporated experiences over 4 years of university teaching, industry consulting, and many workshops, in Australia and New Zealand. I deliver it twice yearly, for the NZSSN, at The University of Auckland, as well as the Statistical Society of Australia: github.com/frycast/SQL_Course
+Most of my current research is in explainable AI, though I'm most interested in (1) relationships between uncertainty and decision making in Stats/ML/AI; (2) effective collaboration between teams of people on hard or complex tasks; and (3) intellectual integrity, education and healthy incentive schemes.
+
+I love teaching things well, writing courses and books, teaching stats and meta‑analysis to Master of Data Science students, and teaching database design / SQL concepts to professional statisticians and scientists. I've also enjoyed being involved in open source development - writing a handful of open source R packages.
+
+Currently serving as the executive privacy officer and database administrator, at the Statistical Society of Australia, as well as a technical sub-editor at the Australian & New Zealand Journal of Statistics. 
+
+In my spare time I enjoy being a dad, surfing, good conversation, and my own coding projects (in Julia, Python, R, SQL and a few other languages).
+
+My Intro SQL course is delivered twice yearly for The University of Auckland, as well as once per year at the Statistical Society of Australia: github.com/frycast/SQL_Course
 
 ----------------------------------------------------------
 
