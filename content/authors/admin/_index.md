@@ -1,18 +1,20 @@
 ---
 # Display name
-title: Daniel Vidali Fryer
+title: Dr. Danny Fryer
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: PhD Data Scientist / Assoc. Lecturer / Freelancer / AFHEA
+role: Senior Data Scientist / Hon. Lecturer / AFHEA
 
 # Organizations/Affiliations to show in About widget
 organizations:
-- name: The University of Queensland
-  url:
+- name: The Social Research Centre
+  url: https://srcentre.com.au/
 - name: La Trobe University
+  url:
+- name: The University of Queensland
   url:
 
 # Short bio (displayed in user profile at end of posts)
