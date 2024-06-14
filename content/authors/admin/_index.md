@@ -18,7 +18,7 @@ organizations:
   url:
 
 # Short bio (displayed in user profile at end of posts)
-bio: Experienced in leading and innovating in data science, I specialise in data engineering, explainable AI/ML, and statistical analysis, focusing on simplification, uncertainty, and decision-making, while passionately teaching.
+bio: Experienced in leading and innovating in data science, I specialise in data engineering, explainable AI/ML, and statistical analysis, focusing on simplification, uncertainty, decision-making and teaching.
 
 # Interests to show in About widget
 interests:
@@ -76,21 +76,21 @@ email: "danielvfryer@gmail.com"
 highlight_name: false
 ---
 
-I've worked as project lead, systems designer, maintainer, developer, and researcher, on large and small projects in industry and academia.
+Hi there. What brings you to these parts? I suppose you're here because you want to know about me!
 
-I'm big on data engineering, explainable ML/AI, and theoretical and applied stats.
+I have expertise in software/data engineering, statistical modelling, machine learning and AI. I've worked as project lead, systems designer, developer and researcher on a variety of high-value projects.
 
 I believe one of the biggest challenges in engineering is to not overcomplicate things - to pick the right problems and strip away complexity, not add more in. It's iterative, and it's hard (or impossible?) to get it "right". The goal posts naturally shift as requirements evolve.
 
-When it comes to stats and machine learning, I tend to focus a lot on uncertainty and decision making. Models help us with experimenting, exploring, explaining, predicting, quantifying uncertainty/volatility, and then ultimately making decisions.
+In stats and machine learning, I focus a lot on uncertainty and decision making. Most models exist to help us make better and more informed decisions.
 
-Underneath all that modelling lies all the insane amounts of abstraction we've built up to support data flow: creation, collection, storage, structure, automation, interfaces, monitoring, networks, security...
+Underneath all that modelling, infrastructure "keeps the lights on" and captures enduring business logic, dealing with data lifecycle management, observability, collection, storage, orchestration, governance, interfaces, networks, security...
 
-What keeps me engaged is that I always start from the assumption that there are simple elegant solutions to our problems. I think solutions have enough in common, abstractly, that we should invest considerable time in improving how we go about finding and building them.
+What keeps me engaged is that I always start from the assumption that there are simple solutions to our problems. I think solutions have enough in common that we should invest considerable time in improving how we go about finding and building them.
 
-I love teaching, writing courses and books. my favourite way to teach is in short workshops where I can design the experience and the material. I love getting to the end and knowing I've made the experience worthwhile for the people who've attended.
+I also love teaching, writing courses and books. my favourite way to teach is in short workshops where I can design the full experience and all the material. I love getting to the end and knowing I've made the workshop worthwhile for the people who've attended.
 
-In my spare time I enjoy being a dad, surfing, good conversation, and my own coding projects (in Julia, Python, R and SQL, mainly).
+In my spare time I enjoy being a dad, surfing, good conversation, and my own coding projects - currently spending some time learning Rust, TypeScript, React and more cloud services (mostly AWS) for data engineering and generative AI.
 
 ----------------------------------------------------------
 
