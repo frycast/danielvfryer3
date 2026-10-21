@@ -788,6 +788,7 @@ textarea {
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: start;
 }
 .honors-list li {
   border-top: 1px solid var(--line);
@@ -801,6 +802,21 @@ textarea {
   font-size: 13px;
   color: var(--slate);
   margin-top: 8px;
+}
+.honors-list summary {
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 13px;
+  padding-block: 10px;
+  width: fit-content;
+}
+.award-description {
+  max-width: 68ch;
+}
+.award-description blockquote {
+  border-left: 2px solid var(--line);
+  margin: 16px 0 0;
+  padding-left: 16px;
 }
 @media (max-width: 700px) {
   .current-work .career-entry,

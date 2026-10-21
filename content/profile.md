@@ -5,8 +5,8 @@ bio: I like finding solutions to messy problems involving data, people and techn
 organizations:
   - name: The Social Research Centre
     url: https://srcentre.com.au/
+  - name: The University of Queensland
   - name: La Trobe University
-  - name: The University of Auckland
 top_skills:
   - Agentic AI Development
   - Technical Leadership

@@ -137,8 +137,14 @@ test("all profile experience, education, top skills, languages, and honors are p
     assert.ok(home.includes(escaped(skill)));
   for (const language of profile.languages)
     assert.ok(home.includes(language.proficiency));
-  for (const honor of career.honors)
+  assert.equal(career.honors.length, 17);
+  for (const honor of career.honors) {
     assert.ok(home.includes(escaped(honor.name)));
+    assert.ok(home.includes(escaped(honor.organization)));
+    assert.ok(home.includes(escaped(honor.date || honor.year)));
+    for (const link of honor.links || [])
+      assert.ok(home.includes(escaped(link.url)));
+  }
   assert.ok(home.includes("mailto:danielvfryer@gmail.com"));
   assert.doesNotMatch(home, /Senior Data Scientist \/ Hon\. Lecturer/);
 });
