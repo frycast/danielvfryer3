@@ -265,6 +265,63 @@ textarea {
   background: var(--button-hover);
   text-decoration: none;
 }
+.explore-button {
+  min-height: 68px;
+  max-width: 100%;
+  gap: 24px;
+  padding: 18px 26px;
+  font-size: 18px;
+  border-radius: 9px;
+}
+.explore-button span {
+  font-size: 25px;
+  line-height: 1;
+}
+.resource-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.resource-entry {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr) auto;
+  gap: 32px;
+  align-items: start;
+  padding-block: 32px;
+  border-top: 1px solid var(--line);
+}
+.resource-kind {
+  color: var(--slate);
+  font-size: 13px;
+  margin-top: 5px;
+}
+.resource-entry h3 {
+  font: 500 32px/1.15 var(--display);
+  letter-spacing: -0.4px;
+}
+.resource-description {
+  max-width: 65ch;
+  color: var(--slate);
+  font-size: 15px;
+  margin-top: 12px;
+}
+.resource-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+@media (max-width: 700px) {
+  .resource-entry {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .resource-kind {
+    margin: 0;
+  }
+  .resource-action {
+    justify-self: start;
+  }
+}
 .text-link {
   font-size: 14px;
   font-weight: 700;
@@ -987,6 +1044,9 @@ textarea {
   .site-header nav {
     width: 100%;
     justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    row-gap: 4px;
   }
   .hero h1 {
     font-size: 100px;

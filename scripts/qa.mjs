@@ -19,6 +19,7 @@ async function verifyThemes(page, width) {
   await expect(picker).toHaveValue("dark");
   assert.equal(await background(page), dark, "Dark persists after reload");
   await page.locator('nav a[href="/experience/"]').click();
+  await expect(page).toHaveURL(/\/experience\/$/);
   await expect(picker).toHaveValue("dark");
   assert.equal(await background(page), dark, "Dark persists across pages");
   await page.goto("http://127.0.0.1:4321/");
@@ -82,6 +83,38 @@ try {
       await page.screenshot({ path: `test-results/hero-${width}.png` });
     assert.equal(await page.locator("h1").innerText(), "Danny\nFryer.");
     assert.equal(await page.locator(".paper").count(), 3);
+    const exploreButton = page.getByRole("link", {
+      name: "Explore and learn",
+      exact: true,
+    });
+    await expect(exploreButton).toHaveAttribute("href", "#explore");
+    await exploreButton.click();
+    await expect(page.locator("#explore-title")).toBeInViewport();
+    for (const [name, href] of [
+      [
+        "View course materials: Introduction to SQL",
+        "https://github.com/frycast/SQL_course",
+      ],
+      [
+        "Play the game: Night Shift at Shackleton",
+        "https://night-shift-at-shackleton.netlify.app",
+      ],
+      ["View the package: rcosmo", "https://github.com/frycast/rcosmo"],
+    ]) {
+      await expect(
+        page.getByRole("link", { name, exact: true }),
+      ).toHaveAttribute("href", href);
+    }
+    if (width === 1440 || width === 390) {
+      await page
+        .locator("#explore")
+        .screenshot({ path: `test-results/explore-${width}.png` });
+      await page.getByLabel("Color theme").selectOption("dark");
+      await page
+        .locator("#explore")
+        .screenshot({ path: `test-results/explore-dark-${width}.png` });
+      await page.getByLabel("Color theme").selectOption("automatic");
+    }
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -144,6 +177,7 @@ try {
       fullPage: true,
     });
     await page.locator('nav a[href="/experience/"]').click();
+    await expect(page).toHaveURL(/\/experience\/$/);
     assert.equal(await page.locator(".career-entry").count(), 15);
     assert.ok(
       await page.evaluate(
@@ -167,6 +201,7 @@ try {
   assert.equal(await noJS.locator(".paper").count(), 3);
   assert.ok(await noJS.locator("form").isVisible());
   await noJS.locator('nav a[href="/experience/"]').click();
+  await expect(noJS).toHaveURL(/\/experience\/$/);
   assert.equal(await noJS.locator(".career-entry").count(), 15);
   await noJS.close();
   const restricted = await browser.newPage();
@@ -188,7 +223,7 @@ try {
   await restricted.close();
   assert.deepEqual(failures, []);
   console.log(
-    "Browser QA passed at 1440, 768, 390, and 320px: Light/Dark/Automatic, persistence, system changes, blocked storage, exact biography, experience, images, navigation, search, forms, and no-JS content.",
+    "Browser QA passed at 1440, 768, 390, and 320px: Explore and learn button and destinations, Light/Dark/Automatic, persistence, system changes, blocked storage, exact biography, experience, images, navigation, search, forms, and no-JS content.",
   );
 } finally {
   await browser.close();
