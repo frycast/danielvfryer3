@@ -173,16 +173,111 @@ experience:
     description: Providing safety and emergency response for recreational divers touring the great barrier reef.
 
 honors:
-  - name: Vice-Chancellor's Sessional Teaching Award
+  - name: SSA President’s Award for Leadership in Statistics
+    organization: Statistical Society of Australia
+    date: August 2022
+    description: Awarded to the 2020-2022 Branch Councils.
+
+  - name: Associate Fellow of the Higher Education Academy
+    organization: Advance HE
+    date: July 2021
+    association: La Trobe University
+    description: Internationally recognised fellowship. Demonstrates a commitment to professionalism and excellence in teaching in higher education.
+
+  - name: Future Superstar Award, Faculty of Science
+    organization: The University of Queensland
+    date: March 2021
+    association: The University of Queensland
+    description: |
+      Awarded to up to two PhD students in the Faculty of Science at The University of Queensland, each year. The award description reads:
+
+      > Daniel has a strong history of volunteer and service work. Last year he organised an online nation-wide Industry Showcase event for data scientists. The event attracted over 180 attendees, including from Italy and Germany. Daniel is a national communications committee member for the non-profit Statistical Society of Australia, has engaged in youth mathematics outreach, and served two years with the State Emergency Services. Daniel is an enthusiastic teacher who employs innovative teaching strategies. During his undergraduate degree he voluntarily wrote a 300 page textbook on probability theory for undergraduates. Daniel is also an avid and community-minded programmer. He has authored a number of excellent open source software packages for public use.
+    links:
+      - name: Faculty of Science award announcement
+        url: https://science.uq.edu.au/article/2021/04/2020-faculty-science-awards-announced
+
+  - name: Vice Chancellor's Sessional Teaching Award
     organization: La Trobe University
-    year: "2020"
+    date: December 2020
+    association: La Trobe University
+    description: For an approach to teaching and the support of learning that influences, motivates and inspires students to learn. Awarded to a maximum of two sessional teachers each year at La Trobe University.
+
   - name: Highly Commended, Australian Astrostatistics Association awards
     organization: Australian Astrostatistics Association
     year: "2020"
     description: For the rcosmo research software.
-  - name: La Trobe Award in Community Engagement
-  - name: Professor Jim Morrison Prize for Chemistry 1
-  - name: Professor Jim Morrison Prize for Chemistry 2
-  - name: 4 x Pro Vice Chancellor's Commendation
-    year: 2014, 2015, 2016 and 2017
+
+  - name: Three Minute Thesis Competition, People's Choice Award
+    organization: Faculty of Science, The University of Queensland
+    date: August 2020
+    association: The University of Queensland
+    description: "Faculty wide competition: clear, accessible and engaging communication of big, complex ideas."
+
+  - name: First prize - UQ Pitching Research Competition
+    organization: The University of Queensland
+    date: December 2019
+    association: The University of Queensland
+    description: A university wide competition among higher degree research students to produce the best 2-page written research proposal and 10 minute video presentation, pitched to an audience of academic experts. Other finalists produced excellent submissions from the School of Dentistry, Business School, School of Human Movement and Nutrition Sciences, The School of Languages and Cultures and the School of Chemical Engineering.
+    links:
+      - name: Watch my winning submission
+        url: https://youtu.be/h-m8QwLq29Y
+
+  - name: Research Training Program Scholarship
+    organization: The University of Queensland
+    date: April 2019
+    association: The University of Queensland
+    description: Competitive stipend and full tuition fees for 4 years of doctorate research in statistics and machine learning.
+
+  - name: David Myer's Medal
+    organization: La Trobe University
+    date: December 2018
+    association: La Trobe University
+    description: Awarded annually to the most outstanding honours student in the college of Science, Health and Engineering at La Trobe University.
+
+  - name: The Department Prize in Fourth Year Statistics
+    organization: Department of Mathematics and Statistics La Trobe University
+    date: November 2018
+    association: La Trobe University
+    description: Awarded to the most outstanding student in fourth year statistics (honours).
+
+  - name: 4 x Pro Vice Chancellor's Commendation (2014, 2015, 2016 and 2017)
+    organization: La Trobe University
+    date: November 2017
+    association: La Trobe University
+    description: Received once per year during Bachelor of Science, including Honours year.
+
+  - name: LTSU Silver Scholarship
+    organization: La Trobe Student Union
+    date: October 2017
+    association: La Trobe University
+    description: For demonstrating active engagement and outstanding passion for mathematics and statistics, along with strong involvement in the La Trobe student community. Three silver scholarships are awarded university-wide annually. Silver is the highest grade awarded on merit alone.
+
+  - name: The Department Prize in Third Year Statistics
+    organization: Mathematics and Statistics Department, La Trobe University
+    date: November 2016
+    association: La Trobe University
+    description: Awarded to the most outstanding student in third year statistics.
+
   - name: Professor CJ Eliezer Prize in Second Year Mathematics
+    organization: La Trobe University
+    date: November 2015
+    association: La Trobe University
+    description: Awarded to the top second-year mathematics student at La Trobe enrolled in at least 45 credit points of second-year mathematics subjects.
+
+  - name: La Trobe Award in Community Engagement
+    organization: La Trobe University
+    date: November 2014
+    association: La Trobe University
+    description: Awarded for outstanding volunteer efforts contributing to the local community.
+
+  - name: Professor Jim Morrison Prize for Chemistry 1
+    organization: La Trobe University
+    date: November 2014
+    association: La Trobe University
+    description: Awarded to the top student in the first year subject CHE1CHF, Chemistry Foundations, at La Trobe.
+
+  - name: Professor Jim Morrison Prize for Chemistry 2
+    organization: La Trobe University
+    date: November 2014
+    association: La Trobe University
+    description: Awarded to the top student in the first year subject CHE1APL, Chemistry Applications, at La Trobe.

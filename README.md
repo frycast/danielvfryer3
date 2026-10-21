@@ -18,6 +18,7 @@ Open http://127.0.0.1:4321. Restart the preview after editing. `npm run build` g
 - `content/profile.md`: biography, headline, affiliations, education, interests, languages, social links, and CV URL.
 - `assets/media/portrait.jpg`: profile photo.
 - `data/site.yaml`: site title, production URL, contact email, location, appointment URL, and contact links.
+- Set `background_sharks: false` in `data/site.yaml` to remove the ASCII shark background. See [shark controls and removal](docs/ascii-sharks.md). Visitors can pause the effect with the bottom-left control; reduced motion starts it paused.
 - `data/skills.yaml`: the six skills and disciplines on the homepage.
 - `data/resources.yaml`: the Explore and learn section. Add or reorder entries in `items`; each has a `title`, `kind` (such as Course, Game, or Software), `description`, `url`, and `action` label. The list renders automatically without template changes.
 - `data/career.yaml`: experience and honors. Roles marked `featured: true` appear on the homepage; `/experience/` shows the full history.

@@ -1,7 +1,11 @@
 import { chromium, expect } from "@playwright/test";
 import assert from "node:assert/strict";
 import fs from "node:fs/promises";
+import YAML from "yaml";
 
+const sharksEnabled =
+  YAML.parse(await fs.readFile("data/site.yaml", "utf8")).background_sharks ===
+  true;
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const failures = [];
 const background = (page) =>
@@ -54,6 +58,48 @@ async function verifyThemes(page, width) {
   );
   await page.emulateMedia({ colorScheme: "light" });
 }
+async function verifySharks(page) {
+  const canvas = page.locator("[data-sharks]");
+  const toggle = page.locator("[data-sharks-toggle]");
+  if (!sharksEnabled) {
+    await expect(canvas).toHaveCount(0);
+    await expect(toggle).toHaveCount(0);
+    return;
+  }
+  const pixels = () => canvas.evaluate((el) => el.toDataURL());
+  await expect(canvas).toHaveAttribute("data-state", "swimming");
+  await expect(canvas).toHaveAttribute("aria-hidden", "true");
+  assert.equal(
+    await canvas.evaluate((el) => getComputedStyle(el).pointerEvents),
+    "none",
+  );
+  const initial = await pixels();
+  await expect.poll(pixels).not.toBe(initial);
+  await toggle.click();
+  await expect(canvas).toHaveAttribute("data-state", "paused");
+  await expect(canvas).toBeHidden();
+  const still = await pixels();
+  await page.evaluate(
+    () =>
+      new Promise((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve)),
+      ),
+  );
+  assert.equal(await pixels(), still, "Paused sharks stop rendering");
+  await page.reload();
+  await expect(toggle).toHaveText("Play sharks");
+  await expect(canvas).toHaveAttribute("data-state", "paused");
+  await toggle.click();
+  await expect(canvas).toHaveAttribute("data-state", "swimming");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await expect(canvas).toHaveAttribute("data-state", "paused");
+  await page.reload();
+  await expect(canvas).toHaveAttribute("data-state", "paused");
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await toggle.click();
+  await expect(canvas).toHaveAttribute("data-state", "swimming");
+  await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
+}
 try {
   await fs.mkdir("test-results", { recursive: true });
   for (const width of [1440, 768, 390, 320]) {
@@ -70,6 +116,43 @@ try {
     await page.goto("http://127.0.0.1:4321/");
     await page.evaluate(() => document.fonts.ready);
     await verifyThemes(page, width);
+    await verifySharks(page);
+    assert.deepEqual(
+      await page
+        .locator(".affiliations")
+        .locator(":scope > *")
+        .allTextContents(),
+      [
+        "The Social Research Centre",
+        "The University of Queensland",
+        "La Trobe University",
+      ],
+    );
+    await expect(page.locator(".honors-list > li")).toHaveCount(17);
+    const futureAward = page.locator(".honors-list > li").filter({
+      has: page.getByRole("heading", {
+        name: "Future Superstar Award, Faculty of Science",
+        exact: true,
+      }),
+    });
+    await futureAward.locator("summary").click();
+    await expect(futureAward.locator("blockquote")).toContainText(
+      "300 page textbook",
+    );
+    await expect(
+      futureAward.getByRole("link", {
+        name: "Faculty of Science award announcement",
+      }),
+    ).toHaveAttribute(
+      "href",
+      "https://science.uq.edu.au/article/2021/04/2020-faculty-science-awards-announced",
+    );
+    if (width === 1440 || width === 390)
+      await page
+        .locator("#recognition")
+        .screenshot({ path: `test-results/awards-${width}.png` });
+    await futureAward.locator("summary").click();
+    await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
     const expectedBio = await fs.readFile(
       "tests/fixtures/linkedin-about.txt",
       "utf8",
@@ -130,7 +213,7 @@ try {
         await img.getAttribute("src"),
       );
     }
-    await page.evaluate(() => scrollTo(0, 0));
+    await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
     await page.screenshot({
       path: `test-results/home-${width}.png`,
       fullPage: true,
@@ -183,7 +266,9 @@ try {
     await page.locator("[data-paper-search]").fill("");
     assert.equal(await page.locator("[data-paper]:visible").count(), 3);
     await page.locator(".paper h3 a").first().click();
-    await expect(page.locator("h2").filter({ hasText: "Abstract" })).toBeVisible();
+    await expect(
+      page.locator("h2").filter({ hasText: "Abstract" }),
+    ).toBeVisible();
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -230,6 +315,10 @@ try {
   await expect.poll(() => background(noJS)).not.toBe(noJSLight);
   assert.equal(await noJS.locator(".paper").count(), 3);
   assert.ok(await noJS.locator("form").isVisible());
+  await expect(noJS.locator("[data-sharks-toggle]")).toBeHidden();
+  const noJSAward = noJS.locator(".honors-list details").first();
+  await noJSAward.locator("summary").click();
+  await expect(noJSAward).toHaveAttribute("open", "");
   await noJS.locator('nav a[href="/experience/"]').click();
   await expect(noJS).toHaveURL("http://127.0.0.1:4321/experience/");
   await expect(noJS.locator(".career-entry")).toHaveCount(15);
@@ -250,10 +339,28 @@ try {
     "data-theme",
     "dark",
   );
+  if (sharksEnabled) {
+    await restricted.locator("[data-sharks-toggle]").click();
+    await expect(restricted.locator("[data-sharks]")).toHaveAttribute(
+      "data-state",
+      "paused",
+    );
+  }
   await restricted.close();
+  const noCanvas = await browser.newPage();
+  noCanvas.on("pageerror", (e) => failures.push(e.message));
+  await noCanvas.addInitScript(() => {
+    HTMLCanvasElement.prototype.getContext = () => null;
+  });
+  await noCanvas.goto("http://127.0.0.1:4321/");
+  await expect(noCanvas.locator("[data-sharks-toggle]")).toHaveCount(0);
+  await expect(
+    noCanvas.getByRole("link", { name: "Explore and learn", exact: true }),
+  ).toBeVisible();
+  await noCanvas.close();
   assert.deepEqual(failures, []);
   console.log(
-    "Browser QA passed at 1440, 768, 390, and 320px: Explore and learn button and destinations, themes, profile, images, navigation, search, form failure/retry/success, and no-JS content. No live messages sent.",
+    `Browser QA passed at 1440, 768, 390, and 320px: sharks ${sharksEnabled ? "animate, pause, persist, respect reduced motion and tolerate unavailable canvas/storage" : "are disabled"}; all 17 awards and affiliations; Explore and learn, themes, profile, images, navigation, search, form failure/retry/success, and no-JS content. No live messages sent.`,
   );
 } finally {
   await browser.close();

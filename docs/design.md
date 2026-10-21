@@ -1,4 +1,4 @@
-﻿# Site design
+# Site design
 
 The site introduces Danny's data science work to collaborators, students, and prospective colleagues, then makes his research, experience, and contact details easy to find.
 
@@ -41,6 +41,27 @@ Software   rcosmo                        View the package
 ```
 
 The review favors a list over three matching cards: these resources serve different purposes, and their format and action make those differences easy to scan. The larger invitation supplies the emphasis; the list needs no extra decorative elements. Desktop and phone screenshots confirm that the button and resource actions remain clear in both themes.
+
+## Sharks and complete recognition
+
+Keep the established Paper `#f5f8fc`, Ink `#182e48`, Blue `#224bc3`, Mist `#e3ecf8`, and Slate `#52647a` palette and existing dark counterparts. Manrope remains the content face and Newsreader the display face; only the ASCII drawing uses a system monospace face. A low-opacity fixed canvas sits behind the content, with no pointer interception. The requested sharks supply the playful detail without adding ocean-themed chrome or changing the professional introduction. Use the requested ascii-sharks simulation locally, with two sharks on desktop and one on phones, a modest fish population, and a capped frame rate.
+
+```text
+[quiet ASCII ocean behind the page]
+Name + main invitation                     Portrait
+Social Research Centre | Queensland | La Trobe
+...
+Honors & awards
+Award name                                 Award name
+Issuer, date                               Issuer, date
+[Expand award details]                     [Expand award details]
+...
+Persistent bottom-left control              [Pause sharks]
+```
+
+All 16 supplied awards remain visible in chronological order, together with the existing astrostatistics recognition. Native disclosure controls hold full descriptions, the long award citation, and source/video links, keeping the list readable and available without JavaScript. On phones, use one column. Affiliations follow the user's exact requested order.
+
+Review before implementation: a full-contrast ocean would compete with the introduction and make long text harder to read. Keep its contrast low, place it behind all controls, and remove the upstream decorative grid. Provide a visible pause control, remember the visitor's choice, stop drawing in hidden tabs, and start paused for reduced motion. The entire effect must be removable with `background_sharks: false` in `data/site.yaml`; no third-party network or framework is required at runtime.
 
 ## Review
 
