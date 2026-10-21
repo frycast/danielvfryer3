@@ -5,14 +5,10 @@
 [build.environment]
   NODE_VERSION = "22"
 
-[context.production]
-  command = "npm run build"
-
-[context.deploy-preview]
-  command = "npm run build"
-
-[context.branch-deploy]
-  command = "npm run build"
+[[redirects]]
+  from = "/authors/admin/avatar.jpg"
+  to = "/media/portrait.jpg"
+  status = 301
 
 [[headers]]
   for = "/*"

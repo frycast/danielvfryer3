@@ -1,8 +1,8 @@
 ﻿# Daniel Fryer's website
 
-A static personal and research website built with Node.js. The build reads the existing Markdown and YAML content, generates HTML into `dist/`, and copies the original images, PDFs, and citations. Hugo and Go are not needed.
+A static personal and research website built with Node.js, Markdown, and YAML. Netlify builds the site when changes reach `master`.
 
-## Local development
+## Develop
 
 Use Node.js 22 or later:
 
@@ -11,49 +11,36 @@ npm ci
 npm run dev
 ```
 
-Open http://127.0.0.1:4321. Restart the preview after editing content or templates. `npm run build` generates the production site without starting a server.
+Open http://127.0.0.1:4321. Restart the preview after editing. `npm run build` generates the production site in `dist/`.
 
-## Editing
+## Edit content
 
-- `content/authors/admin/_index.md`: biography, role, affiliations, interests, education, and profile links.
-- `content/authors/admin/avatar.jpg`: portrait.
-- `data/career.yaml`: complete experience history and honors from the supplied LinkedIn profile. The homepage highlights ongoing roles; `/experience/` shows all roles and descriptions.
-- `content/home/skills.md`: tools and disciplines.
-- `content/publication/<slug>/index.md`: publication metadata, summary, abstract, and body. Put figures, PDFs, and BibTeX files alongside it. Existing publication URLs are preserved.
-- `config/_default/params.yaml`: email, location, appointment URL, and contact links.
-- `config/_default/config.yaml`: site title and canonical production URL.
-- `scripts/build.mjs`: static page templates and content loading.
-- `web/styles.css` and `web/site.js`: presentation and progressive publication search.
+- `content/profile.md`: biography, headline, affiliations, education, interests, languages, social links, and CV URL.
+- `assets/media/portrait.jpg`: profile photo.
+- `data/site.yaml`: site title, production URL, contact email, location, appointment URL, and contact links.
+- `data/skills.yaml`: the six skills and disciplines on the homepage.
+- `data/career.yaml`: experience and honors. Roles marked `featured: true` appear on the homepage; `/experience/` shows the full history.
+- `content/publication/<slug>/index.md`: paper title, authors, date, summary, abstract, and body. Images, PDFs, and BibTeX files live beside the Markdown. Their existing URLs are preserved. Optional `links` entries use `name` and `url`.
 
-Original content and the old Hugo template files remain in the repository for reference, including inactive example sections, draft legal placeholders, and `exampleSite/`. They are not used to run or deploy the new site. The old Go module files, theme metadata, and Wowchemy update scripts are also unused. Draft privacy and terms placeholders remain unpublished. Example project, talk, and slide content retains its URLs; the legacy example slide deck is available as a readable document.
+`scripts/build.mjs` generates the pages. `web/styles.css` controls the appearance, and `web/site.js` adds publication search. Fonts are hosted locally, with their licenses included in the build. The repository license and requested frontend design skill are retained.
 
-Fonts are served locally. Their SIL Open Font Licenses are copied into `dist/fonts/` during the build. The requested Anthropic skill is copied verbatim to `.agents/skills/frontend-design/SKILL.md`; the design plan and visual review are in `docs/design.md`.
+[Design notes](docs/design.md) describe the layout and palette. [Profile provenance](docs/profile-update.md) records the supplied LinkedIn source and biography verification.
 
-## Checks
+## Verify
 
 ```sh
 npm run build
 npm test
-npm run dev
-# In a second terminal, with Google Chrome installed:
+# With the preview running and Google Chrome installed:
 npm run test:browser
 ```
 
-The content checks verify internal URLs and anchors, byte-for-byte publication attachments, biography and abstracts, draft exclusion, and the Netlify form markup. The complete biography is compared against the extracted LinkedIn Summary, ignoring whitespace only, and checks cover all 15 roles, education, top skills, languages, and honors. Browser checks cover desktop, tablet, narrow phones, publication search, form validation, image loading, navigation, and the full experience page. Screenshots go to ignored `test-results/`. The form is validated locally without sending a message.
+Content checks verify local URLs and anchors, original publication attachments, the exact biography, career and education details, Netlify form markup, and the published page list. Browser checks cover desktop and mobile layouts, publication search, image loading, form validation, and navigation without JavaScript. Screenshots are saved to ignored `test-results/`. Tests do not send messages.
 
-## Netlify deployment
+## Deploy
 
-Keep the existing Netlify site's GitHub connection and production branch set to **master**. Merging a PR into master or pushing to master triggers the existing Netlify integration. No separate deployment action or token is needed.
+Keep the existing Netlify GitHub connection and production branch set to **master**. The root `netlify.toml` sets Node.js 22, the build command `npm run build`, and the publish directory `dist`. These settings also apply to deploy previews and branch deployments. Previews use Netlify's `DEPLOY_PRIME_URL` for canonical URLs; production uses `data/site.yaml`.
 
-The root `netlify.toml` replaces the former Hugo command and cache plugin with:
+The contact form is named `contact`, includes a honeypot, and redirects successful submissions to `/thank-you/`. Netlify form detection must be enabled. Local preview supports reading and validation; actual delivery runs through Netlify.
 
-- Node.js 22
-- Build command: `npm run build`
-- Publish directory: `dist`
-- The same Node build for deploy previews and branch deploys
-
-The production branch setting lives in Netlify's project configuration, not in `netlify.toml`; this PR leaves the existing Git connection in place. Preview deployments get their own canonical URL from Netlify's `DEPLOY_PRIME_URL`. Production uses the existing base URL from the config.
-
-The contact form remains a static Netlify form named `contact`, with a honeypot and a `/thank-you/` destination. Netlify form detection must remain enabled on the connected site. Message delivery can be tested on a Netlify deploy preview after deployment; the local preview does not submit forms.
-
-GitHub Actions builds and checks changes in PRs targeting master and on pushes to master. Netlify handles the actual hosting deployment.
+GitHub Actions builds and checks PRs targeting `master` and pushes to `master`. Netlify handles hosting and deployment.

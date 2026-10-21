@@ -1,48 +1,24 @@
 ---
-# Display name
 title: Danny Fryer, PhD
-
-# Is this the primary user of the site?
-superuser: true
-
-# Role/position/tagline
 role: Senior Data Scientist (Data Infrastructure) & Adjunct Lecturer
-
-# Organizations/Affiliations to show in About widget
-organizations:
-- name: The Social Research Centre
-  url: https://srcentre.com.au/
-- name: La Trobe University
-  url:
-- name: The University of Auckland
-  url:
-
-# Short bio (displayed in user profile at end of posts)
 bio: I like finding solutions to messy problems involving data, people and technology. I have a PhD in understanding machine learning and AI models.
-
+organizations:
+  - name: The Social Research Centre
+    url: https://srcentre.com.au/
+  - name: La Trobe University
+  - name: The University of Auckland
 top_skills:
-- Agentic AI Development
-- Technical Leadership
-- Cross-functional Collaborations
-
-languages:
-- name: Spanish
-  proficiency: Limited Working
-- name: English
-  proficiency: Native or Bilingual
-
-# Interests to show in About widget
+  - Agentic AI Development
+  - Technical Leadership
+  - Cross-functional Collaborations
 interests:
-- AI agents for developers
-- Stats/AI/ML
-- Data infrastructure
-- Coding and development
-- Uncertainty and decisions
-- Education
-
-# Education to show in About widget
+  - AI agents for developers
+  - Stats/AI/ML
+  - Data infrastructure
+  - Coding and development
+  - Uncertainty and decisions
+  - Education
 education:
-  courses:
   - course: Doctorate (PhD), Statistics
     institution: The University of Queensland
     year: January 2019 – April 2023
@@ -52,43 +28,23 @@ education:
   - course: Bachelor of Arts, Sociology and Anthropology
     institution: La Trobe University
     year: 2010
-
-# Social/Academic Networking
-# For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
-#   For an email link, use "fas" icon pack, "envelope" icon, and a link in the
-#   form "mailto:your-email@example.com" or "/#contact" for contact widget.
+languages:
+  - name: Spanish
+    proficiency: Limited Working
+  - name: English
+    proficiency: Native or Bilingual
+cv: https://github.com/frycast/cv/raw/master/cv/cv.pdf
 social:
-- icon: envelope
-  icon_pack: fas
-  link: '#contact'  # For a direct email link, use "mailto:test@example.org".
-- icon: google-scholar
-  icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=DBWm9DYAAAAJ
-- icon: github
-  icon_pack: fab
-  link: https://github.com/frycast
-- icon: orcid
-  icon_pack: ai
-  link: https://orcid.org/0000-0001-6032-0522
-- icon: linkedin
-  icon_pack: fab
-  link: https://linkedin.com/in/dvfryer
-- icon: medium
-  icon_pack: fab
-  link: https://medium.com/@danielvfryer
-
-# Link to a PDF of your resume/CV.
-# To use: copy your resume to `static/media/resume.pdf`, enable `ai` icons in `params.toml`, 
-# and uncomment the lines below.
-- icon: cv
-  icon_pack: ai
-  link: https://github.com/frycast/cv/raw/master/cv/cv.pdf
-
-# Enter email to display Gravatar (if Gravatar enabled in Config)
-email: "danielvfryer@gmail.com"
-
-# Highlight the author in author lists? (true/false)
-highlight_name: false
+  - name: Google Scholar
+    url: https://scholar.google.co.uk/citations?user=DBWm9DYAAAAJ
+  - name: GitHub
+    url: https://github.com/frycast
+  - name: ORCID
+    url: https://orcid.org/0000-0001-6032-0522
+  - name: LinkedIn
+    url: https://linkedin.com/in/dvfryer
+  - name: Medium
+    url: https://medium.com/@danielvfryer
 ---
 
 I like finding solutions to messy problems involving data, people and technology. I have a PhD in understanding machine learning and AI models. One thing I’m especially interested in right now is helping developers use AI agents to help them focus on higher-level engineering concepts, speed up parts of their work, and grow their knowledge / push themselves more.

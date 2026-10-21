@@ -27,111 +27,46 @@ const read = async (file) => {
     });
   }
 };
-const profile = await read("content/authors/admin/_index.md");
-const config = YAML.parse(
-  await fs.readFile("config/_default/config.yaml", "utf8"),
-);
-const params = YAML.parse(
-  await fs.readFile("config/_default/params.yaml", "utf8"),
-);
-const skills = (await read("content/home/skills.md")).data.feature;
+const profile = await read("content/profile.md");
+const config = YAML.parse(await fs.readFile("data/site.yaml", "utf8"));
+const skills = YAML.parse(await fs.readFile("data/skills.yaml", "utf8"));
 const career = YAML.parse(await fs.readFile("data/career.yaml", "utf8"));
 const person = profile.data;
 const base = (
   (process.env.CONTEXT && process.env.CONTEXT !== "production"
     ? process.env.DEPLOY_PRIME_URL
-    : "") || config.baseurl
+    : "") || config.url
 ).replace(/\/$/, "");
-const socialNames = {
-  envelope: "Email",
-  "google-scholar": "Google Scholar",
-  github: "GitHub",
-  orcid: "ORCID",
-  linkedin: "LinkedIn",
-  medium: "Medium",
-  cv: "Download CV",
-};
-const cv = person.social.find((s) => s.icon === "cv").link;
+const cv = person.cv;
 const socials = () =>
   person.social
-    .filter((s) => s.icon !== "envelope" && s.icon !== "cv")
-    .map(
-      (s) =>
-        `<a href="${esc(s.link)}">${socialNames[s.icon] || esc(s.icon)}</a>`,
-    )
+    .map((s) => `<a href="${esc(s.url)}">${esc(s.name)}</a>`)
     .join("");
-function markdown(source) {
-  // Translate presentation-only Hugo syntax without changing original content.
-  const fences = [];
-  const protectedSource = source.replace(
-    /^```[^\n]*\n[\s\S]*?^```/gm,
-    (block) => {
-      fences.push(block);
-      return `CODEBLOCKPLACEHOLDER${fences.length - 1}END`;
-    },
-  );
-  const translated = protectedSource
-    .replace(
-      /{{< staticref "([^"]+)"[^>]*>}}([\s\S]*?){{< \/staticref >}}/g,
-      "[$2]($1)",
-    )
-    .replace(/{{[%<]\s*callout\s+\w+\s*[%>]}}/g, "\n<aside>\n")
-    .replace(/{{[%<]\s*\/callout\s*[%>]}}/g, "\n</aside>\n")
-    .replace(/{{[<%][\s\S]*?[%>]}}/g, "");
-  return marked.parse(
-    translated.replace(
-      /CODEBLOCKPLACEHOLDER(\d+)END/g,
-      (_, i) => fences[Number(i)],
-    ),
-  );
+const markdown = (source) => marked.parse(source);
+const papers = [];
+for (const entry of await fs.readdir("content/publication", {
+  withFileTypes: true,
+})) {
+  if (!entry.isDirectory()) continue;
+  const folder = `content/publication/${entry.name}`;
+  const doc = await read(`${folder}/index.md`);
+  if (doc.data.draft) continue;
+  papers.push({
+    ...doc,
+    folder,
+    url: `/publication/${entry.name}/`,
+    files: await fs.readdir(folder),
+  });
 }
-const records = [];
-for (const kind of ["publication", "project", "event", "slides"]) {
-  for (const entry of await fs.readdir(`content/${kind}`, {
-    withFileTypes: true,
-  })) {
-    if (!entry.isDirectory()) continue;
-    const folder = `content/${kind}/${entry.name}`;
-    const doc = await read(`${folder}/index.md`);
-    if (doc.data.draft) continue;
-    records.push({
-      ...doc,
-      kind,
-      slug: entry.name,
-      folder,
-      url: `/${kind === "event" ? "talk" : kind}/${entry.name}/`,
-      files: await fs.readdir(folder),
-    });
-  }
-}
-const papers = records
-  .filter((r) => r.kind === "publication")
-  .sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
+papers.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
 function resources(record) {
   const links = [];
-  for (const [key, label] of Object.entries({
-    url_pdf: "Read paper",
-    url_code: "Code",
-    url_dataset: "Data",
-    url_poster: "Poster",
-    url_project: "Project",
-    url_slides: "Slides",
-    url_source: "Source",
-    url_video: "Video",
-  })) {
-    if (record.data[key])
-      links.push(`<a href="${esc(record.data[key])}">${label}</a>`);
-  }
   for (const file of record.files.filter((f) => /\.(pdf|bib)$/i.test(f)))
     links.push(
       `<a href="${record.url}${esc(file)}"${file.endsWith(".bib") ? " download" : ""}>${file.endsWith(".bib") ? "Download citation" : "Read paper"}</a>`,
     );
   for (const link of record.data.links || [])
     links.push(`<a href="${esc(link.url)}">${esc(link.name)}</a>`);
-  if (typeof record.data.slides === "string" && record.data.slides)
-    links.push(`<a href="/slides/${esc(record.data.slides)}/">Slides</a>`);
-  if (record.data.doi)
-    links.push(`<a href="https://doi.org/${esc(record.data.doi)}">DOI</a>`);
   return `<div class="resource-links">${links.join("")}</div>`;
 }
 const date = (value) =>
@@ -140,10 +75,7 @@ const date = (value) =>
     month: "long",
     timeZone: "UTC",
   });
-const authors = (record) =>
-  (record.data.authors || [])
-    .map((a) => (a === "admin" ? person.title : a))
-    .join(", ");
+const authors = (record) => (record.data.authors || []).join(", ");
 function figure(record, className = "") {
   const file = record.files.find((f) =>
     /^featured\.(png|jpg|jpeg|webp)$/.test(f),
@@ -198,7 +130,6 @@ if (outputPath !== path.join(process.cwd(), "dist"))
   throw new Error("Unsafe output directory");
 await fs.rm(outputPath, { recursive: true, force: true });
 await fs.mkdir(out, { recursive: true });
-await fs.cp("static", out, { recursive: true });
 await fs.cp("assets/media", `${out}/media`, { recursive: true });
 await fs.cp("web", out, { recursive: true });
 await fs.mkdir(`${out}/fonts`, { recursive: true });
@@ -216,22 +147,17 @@ for (const [font, weights] of [
       `${out}/fonts/${font}-${weight}.woff2`,
     );
 }
-const home = `<section class="hero wrap" id="about"><div class="hero-copy"><p class="hello">Hi there, I’m</p><h1>Danny<br>Fryer<span>.</span></h1><p class="role">${esc(person.role)}</p><p class="intro">${esc(person.bio)}</p><div class="hero-actions"><a class="button" href="#featured">Explore my research</a><a class="text-link" href="${cv}">Download CV ↗</a></div></div><div class="portrait-stage"><img class="portrait" src="/authors/admin/avatar.jpg" alt="Portrait of Dr. Danny Fryer" fetchpriority="high" width="600" height="600"><p>Data, people<br>& technology.</p><span class="location">${esc(params.address.city)}, ${esc(params.address.country)}</span></div></section>
+const home = `<section class="hero wrap" id="about"><div class="hero-copy"><p class="hello">Hi there, I’m</p><h1>Danny<br>Fryer<span>.</span></h1><p class="role">${esc(person.role)}</p><p class="intro">${esc(person.bio)}</p><div class="hero-actions"><a class="button" href="#featured">Explore my research</a><a class="text-link" href="${cv}">Download CV ↗</a></div></div><div class="portrait-stage"><img class="portrait" src="/media/portrait.jpg" alt="Portrait of Dr. Danny Fryer" fetchpriority="high" width="600" height="600"><p>Data, people<br>& technology.</p><span class="location">${esc(config.address.city)}, ${esc(config.address.country)}</span></div></section>
 <div class="affiliations wrap" aria-label="Affiliations">${person.organizations.map((o) => (o.url ? `<a href="${esc(o.url)}">${esc(o.name)}</a>` : `<span>${esc(o.name)}</span>`)).join("")}</div>
-<section class="biography wrap section" id="biography"><div class="section-heading"><h2>A bit about me</h2><p>Engineering, research<br>and making things simpler.</p></div><div class="bio-grid"><div class="prose" data-biography>${markdown(profile.content)}</div><aside class="profile-notes"><h3>Top skills</h3><ul>${person.top_skills.map((s) => `<li>${esc(s)}</li>`).join("")}</ul><h3>What I’m interested in</h3><ul>${person.interests.map((s) => `<li>${esc(s)}</li>`).join("")}</ul><h3>Education</h3>${person.education.courses.map((e) => `<div class="education"><span>${esc(e.year)}</span><p><strong>${esc(e.course)}</strong><br>${esc(e.institution)}</p></div>`).join("")}<a class="text-link" href="${cv}">View my CV ↗</a><h3>Languages</h3><ul>${person.languages.map((l) => `<li><strong>${esc(l.name)}</strong><br>${esc(l.proficiency)}</li>`).join("")}</ul><h3>Find me online</h3><div class="social-links">${socials()}</div></aside></div></section>
-<section class="skills-band" id="skills"><div class="wrap skills-inner"><h2>Skills & disciplines</h2><ul>${skills.map((s) => `<li>${esc(s.name)}</li>`).join("")}</ul></div></section>
+<section class="biography wrap section" id="biography"><div class="section-heading"><h2>A bit about me</h2><p>Engineering, research<br>and making things simpler.</p></div><div class="bio-grid"><div class="prose" data-biography>${markdown(profile.content)}</div><aside class="profile-notes"><h3>Top skills</h3><ul>${person.top_skills.map((s) => `<li>${esc(s)}</li>`).join("")}</ul><h3>What I’m interested in</h3><ul>${person.interests.map((s) => `<li>${esc(s)}</li>`).join("")}</ul><h3>Education</h3>${person.education.map((e) => `<div class="education"><span>${esc(e.year)}</span><p><strong>${esc(e.course)}</strong><br>${esc(e.institution)}</p></div>`).join("")}<a class="text-link" href="${cv}">View my CV ↗</a><h3>Languages</h3><ul>${person.languages.map((l) => `<li><strong>${esc(l.name)}</strong><br>${esc(l.proficiency)}</li>`).join("")}</ul><h3>Find me online</h3><div class="social-links">${socials()}</div></aside></div></section>
+<section class="skills-band" id="skills"><div class="wrap skills-inner"><h2>Skills & disciplines</h2><ul>${skills.map((s) => `<li>${esc(s)}</li>`).join("")}</ul></div></section>
 <section class="wrap section" id="experience"><div class="section-heading"><div><h2>Current work</h2><p>Data infrastructure, teaching and technical leadership.</p></div><a class="text-link" href="/experience/">Full experience</a></div><div class="current-work">${career.experience
   .filter((e) => e.featured)
   .map((e) => careerEntry(e, true))
   .join("")}</div></section>
 <section class="wrap section research" id="featured"><div class="section-heading"><div><h2>Research & publications</h2><p>Explainable AI, Shapley values and uncertainty.</p></div><a class="text-link" href="/publication/">All publications</a></div>${paperList()}</section>
 <section class="wrap section recognition" id="recognition"><div class="section-heading"><h2>Honors & awards</h2></div>${honors()}</section>
-<section class="contact-section" id="contact"><div class="wrap contact-grid"><div><h2>Let’s get in touch.</h2><p>Fill out the form if you’d like to get in touch.</p><a class="email-link" href="mailto:${esc(params.email)}">${esc(params.email)}</a><p>${esc(params.address.city)}, ${esc(params.address.country)}</p><div class="contact-options"><a href="${esc(params.appointment_url)}">Book an appointment ↗</a>${params.contact_links.map((l) => `<a href="${esc(l.link)}">${esc(l.name)}</a>`).join("")}</div><div class="social-links">${socials()}</div></div><form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/"><input type="hidden" name="form-name" value="contact"><p hidden><label>Leave this empty<input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label>Your name<input name="name" autocomplete="name" required maxlength="200"></label><label>Email address<input type="email" name="email" autocomplete="email" required maxlength="254"></label><label>Message<textarea name="message" rows="5" required maxlength="10000"></textarea></label><button class="button" type="submit">Send message</button></form></div></section>`;
-await fs.mkdir(`${out}/authors/admin`, { recursive: true });
-await fs.copyFile(
-  "content/authors/admin/avatar.jpg",
-  `${out}/authors/admin/avatar.jpg`,
-);
+<section class="contact-section" id="contact"><div class="wrap contact-grid"><div><h2>Let’s get in touch.</h2><p>Fill out the form if you’d like to get in touch.</p><a class="email-link" href="mailto:${esc(config.email)}">${esc(config.email)}</a><p>${esc(config.address.city)}, ${esc(config.address.country)}</p><div class="contact-options"><a href="${esc(config.appointment_url)}">Book an appointment ↗</a>${config.contact_links.map((l) => `<a href="${esc(l.url)}">${esc(l.name)}</a>`).join("")}</div><div class="social-links">${socials()}</div></div><form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/"><input type="hidden" name="form-name" value="contact"><p hidden><label>Leave this empty<input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label>Your name<input name="name" autocomplete="name" required maxlength="200"></label><label>Email address<input type="email" name="email" autocomplete="email" required maxlength="254"></label><label>Message<textarea name="message" rows="5" required maxlength="10000"></textarea></label><button class="button" type="submit">Send message</button></form></div></section>`;
 await write("/", config.title, home);
 await write(
   "/experience/",
@@ -243,7 +169,7 @@ await write(
   "Publications",
   `<section class="wrap section"><div class="section-heading"><div><h1 class="page-title">Publications</h1><p>Research by ${esc(person.title)} and collaborators.</p></div>${search()}</div>${paperList()}</section>`,
 );
-for (const r of records) {
+for (const r of papers) {
   await fs.mkdir(`${out}${r.url}`, { recursive: true });
   for (const file of r.files.filter((f) => f !== "index.md"))
     await fs.cp(`${r.folder}/${file}`, `${out}${r.url}${file}`, {
@@ -252,43 +178,10 @@ for (const r of records) {
   await write(
     r.url,
     r.data.title,
-    `<article class="wrap detail section"><a class="text-link" href="${r.kind === "publication" ? "/publication/" : "/"}">${r.kind === "publication" ? "All publications" : "Home"}</a><header class="detail-header"><p class="paper-date">${date(r.data.date)}</p><h1 class="page-title">${esc(r.data.title)}</h1><p>${esc(authors(r))}</p>${resources(r)}</header>${figure(r, "detail-figure")}${r.data.abstract ? `<section class="prose"><h2>Abstract</h2>${markdown(r.data.abstract)}</section>` : ""}<div class="prose">${markdown(r.content)}</div></article>`,
+    `<article class="wrap detail section"><a class="text-link" href="/publication/">All publications</a><header class="detail-header"><p class="paper-date">${date(r.data.date)}</p><h1 class="page-title">${esc(r.data.title)}</h1><p>${esc(authors(r))}</p>${resources(r)}</header>${figure(r, "detail-figure")}${r.data.abstract ? `<section class="prose"><h2>Abstract</h2>${markdown(r.data.abstract)}</section>` : ""}<div class="prose">${markdown(r.content)}</div></article>`,
     r.data.summary || person.bio,
   );
 }
-for (const [url, kind, title] of [
-  ["/event/", "event", "Recent & Upcoming Talks"],
-  ["/talk/", "event", "Talks"],
-  ["/project/", "project", "Projects"],
-  ["/slides/", "slides", "Slides"],
-]) {
-  await write(
-    url,
-    title,
-    `<section class="wrap section"><h1 class="page-title">${title}</h1><ul class="archive-list">${records
-      .filter((r) => r.kind === kind)
-      .map(
-        (r) =>
-          `<li><a href="${r.url}">${esc(r.data.title)}</a><p>${esc(r.data.summary)}</p></li>`,
-      )
-      .join("")}</ul></section>`,
-  );
-}
-await write(
-  "/post/",
-  "Posts",
-  '<section class="wrap section"><h1 class="page-title">Posts</h1><p>No posts have been published yet.</p><a href="/">Return home</a></section>',
-);
-await write(
-  "/tag/deep-learning/",
-  "Deep Learning",
-  '<section class="wrap section"><h1 class="page-title">Deep Learning</h1><a href="/project/example/">Example Project</a></section>',
-);
-await write(
-  "/publication-type/3/",
-  "Preprints",
-  `<section class="wrap section"><h1 class="page-title">Preprints</h1>${paperList()}</section>`,
-);
 await write(
   "/thank-you/",
   "Message sent",
@@ -314,4 +207,4 @@ await fs.writeFile(
   `${out}/index.xml`,
   `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Daniel Fryer</title><link>${base}</link><description>Research and publications</description>${papers.map((p) => `<item><title>${esc(p.data.title)}</title><link>${base}${p.url}</link><guid>${base}${p.url}</guid><description>${esc(p.data.summary)}</description></item>`).join("")}</channel></rss>`,
 );
-console.log(`Built ${routes.length} pages in dist/ without Hugo.`);
+console.log(`Built ${routes.length} pages in dist/.`);
