@@ -19,6 +19,7 @@ async function verifyThemes(page, width) {
   await expect(picker).toHaveValue("dark");
   assert.equal(await background(page), dark, "Dark persists after reload");
   await page.locator('nav a[href="/experience/"]').click();
+  await expect(page).toHaveURL("http://127.0.0.1:4321/experience/");
   await expect(picker).toHaveValue("dark");
   assert.equal(await background(page), dark, "Dark persists across pages");
   await page.goto("http://127.0.0.1:4321/");
@@ -63,7 +64,8 @@ try {
     });
     page.on("pageerror", (e) => failures.push(e.message));
     page.on("response", (r) => {
-      if (r.status() >= 400) failures.push(`${r.status()} ${r.url()}`);
+      if (r.status() >= 400 && r.request().method() !== "POST")
+        failures.push(`${r.status()} ${r.url()}`);
     });
     await page.goto("http://127.0.0.1:4321/");
     await page.evaluate(() => document.fonts.ready);
@@ -110,17 +112,46 @@ try {
     assert.ok(
       await page.locator("form").evaluate((form) => form.checkValidity()),
     );
+    // Exercise Netlify responses locally; never send a real message.
+    let formAttempts = 0;
+    await page.route("http://127.0.0.1:4321/", async (route) => {
+      if (route.request().method() !== "POST") return route.continue();
+      formAttempts++;
+      const fields = new URLSearchParams(route.request().postData());
+      assert.equal(fields.get("form-name"), "contact");
+      assert.equal(fields.get("email"), "preview@example.com");
+      assert.equal(fields.get("bot-field"), "");
+      if (formAttempts === 1)
+        return route.fulfill({ status: 404, body: "Form not registered" });
+      if (formAttempts === 2) return route.abort("failed");
+      return route.fulfill({ status: 200, body: "Accepted" });
+    });
+    const send = page.getByRole("button", {
+      name: "Send message",
+      exact: true,
+    });
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      await send.click();
+      await expect(page.locator("[data-form-status]")).toBeVisible();
+      await expect(send).toBeEnabled();
+      await expect(page.locator('textarea[name="message"]')).toHaveValue(
+        "A locally validated form, not submitted.",
+      );
+      assert.equal(new URL(page.url()).pathname, "/");
+    }
+    await send.click();
+    await expect(page).toHaveURL("http://127.0.0.1:4321/thank-you/");
+    await expect(page.locator("h1")).toHaveText("Thanks for getting in touch.");
+    assert.equal(formAttempts, 3);
     await page.goto("http://127.0.0.1:4321/publication/");
     await page.locator("[data-paper-search]").fill("non-linear");
     assert.equal(await page.locator("[data-paper]:visible").count(), 1);
     await page.locator("[data-paper-search]").fill("no-such-paper");
-    assert.ok(await page.locator("[data-no-results]").isVisible());
+    await expect(page.locator("[data-no-results]")).toBeVisible();
     await page.locator("[data-paper-search]").fill("");
     assert.equal(await page.locator("[data-paper]:visible").count(), 3);
     await page.locator(".paper h3 a").first().click();
-    assert.ok(
-      await page.locator("h2").filter({ hasText: "Abstract" }).isVisible(),
-    );
+    await expect(page.locator("h2").filter({ hasText: "Abstract" })).toBeVisible();
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -144,7 +175,8 @@ try {
       fullPage: true,
     });
     await page.locator('nav a[href="/experience/"]').click();
-    assert.equal(await page.locator(".career-entry").count(), 15);
+    await expect(page).toHaveURL("http://127.0.0.1:4321/experience/");
+    await expect(page.locator(".career-entry")).toHaveCount(15);
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -167,7 +199,8 @@ try {
   assert.equal(await noJS.locator(".paper").count(), 3);
   assert.ok(await noJS.locator("form").isVisible());
   await noJS.locator('nav a[href="/experience/"]').click();
-  assert.equal(await noJS.locator(".career-entry").count(), 15);
+  await expect(noJS).toHaveURL("http://127.0.0.1:4321/experience/");
+  await expect(noJS.locator(".career-entry")).toHaveCount(15);
   await noJS.close();
   const restricted = await browser.newPage();
   restricted.on("pageerror", (e) => failures.push(e.message));
@@ -188,7 +221,7 @@ try {
   await restricted.close();
   assert.deepEqual(failures, []);
   console.log(
-    "Browser QA passed at 1440, 768, 390, and 320px: Light/Dark/Automatic, persistence, system changes, blocked storage, exact biography, experience, images, navigation, search, forms, and no-JS content.",
+    "Browser QA passed at 1440, 768, 390, and 320px: themes, profile, images, navigation, search, form failure/retry/success, and no-JS content. No live messages sent.",
   );
 } finally {
   await browser.close();

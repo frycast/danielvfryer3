@@ -19,6 +19,14 @@ const types = {
 };
 http
   .createServer(async (req, res) => {
+    if (!["GET", "HEAD"].includes(req.method)) {
+      res
+        .writeHead(405, { "Content-Type": "text/plain", Allow: "GET, HEAD" })
+        .end(
+          "Form submissions require a Netlify deployment with form detection enabled.",
+        );
+      return;
+    }
     try {
       const url = decodeURIComponent(
         new URL(req.url, "http://localhost").pathname,
@@ -35,7 +43,7 @@ http
           "Content-Type":
             types[path.extname(file)] || "application/octet-stream",
         })
-        .end(data);
+        .end(req.method === "HEAD" ? undefined : data);
     } catch {
       res
         .writeHead(404, { "Content-Type": "text/html; charset=utf-8" })

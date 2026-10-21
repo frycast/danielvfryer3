@@ -43,6 +43,6 @@ Content checks verify local URLs and anchors, original publication attachments, 
 
 Keep the existing Netlify GitHub connection and production branch set to **master**. The root `netlify.toml` sets Node.js 22, the build command `npm run build`, and the publish directory `dist`. These settings also apply to deploy previews and branch deployments. Previews use Netlify's `DEPLOY_PRIME_URL` for canonical URLs; production uses `data/site.yaml`.
 
-The contact form is named `contact`, includes a honeypot, and redirects successful submissions to `/thank-you/`. Netlify form detection must be enabled. Local preview supports reading and validation; actual delivery runs through Netlify.
+The contact form is named `contact`, includes a honeypot, and redirects successful submissions to `/thank-you/`. In the Netlify project's Forms area, enable form detection and redeploy so the `contact` form is registered. The thank-you page can exist even when Netlify has not registered the form; in that case a submission can return 404. JavaScript handles submissions with a pending state, preserves entered text on errors, and provides a direct email link. The HTML form also works without JavaScript once Netlify Forms is enabled. Local preview rejects submissions because delivery requires Netlify. Browser checks mock submission responses and do not send messages.
 
 GitHub Actions builds and checks PRs targeting `master` and pushes to `master`. Netlify handles hosting and deployment.
