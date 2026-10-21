@@ -13,6 +13,12 @@ The site introduces Danny's data science work to collaborators, students, and pr
 
 Locally hosted Manrope serves body text and navigation. Newsreader serves display headings. Both have system fallbacks.
 
+## Theme modes
+
+Light, Dark, and Automatic are available in a compact header selector. Automatic is the default and follows system appearance, including changes while the page is open. Explicit choices are remembered across visits and applied before the page paints.
+
+Dark mode keeps the same blue identity: slate-blue paper `#142336`, pale ink `#e4ebf5`, blue links `#a8bfff`, secondary surfaces `#1e334c`, muted text `#b1bfd1`, and primary buttons `#426ae1`. Research figures keep white backgrounds so plots remain readable. The layout and portrait stay unchanged. This extends the established design rather than adding a separate visual style.
+
 ## Layout
 
 The oversized name and portrait form the focal point. Affiliations sit beneath the introduction. The exact supplied biography pairs with education and profile details, followed by six professional disciplines, ongoing roles, illustrated publications, honors, and contact. Full career descriptions live on `/experience/`.
