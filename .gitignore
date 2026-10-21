@@ -6,4 +6,7 @@
 public/
 jsconfig.json
 node_modules/
+dist/
+test-results/
+playwright-report/
 .Rproj.user
