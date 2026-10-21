@@ -1,12 +1,12 @@
 ---
 # Display name
-title: Dr. Danny Fryer
+title: Danny Fryer, PhD
 
 # Is this the primary user of the site?
 superuser: true
 
 # Role/position/tagline
-role: Senior Data Scientist / Hon. Lecturer / AFHEA
+role: Senior Data Scientist (Data Infrastructure) & Adjunct Lecturer
 
 # Organizations/Affiliations to show in About widget
 organizations:
@@ -14,14 +14,26 @@ organizations:
   url: https://srcentre.com.au/
 - name: La Trobe University
   url:
-- name: The University of Queensland
+- name: The University of Auckland
   url:
 
 # Short bio (displayed in user profile at end of posts)
-bio: Experienced in leading and innovating in data science, I specialise in data engineering, explainable AI/ML, and statistical analysis, focusing on simplification, uncertainty, decision-making and teaching.
+bio: I like finding solutions to messy problems involving data, people and technology. I have a PhD in understanding machine learning and AI models.
+
+top_skills:
+- Agentic AI Development
+- Technical Leadership
+- Cross-functional Collaborations
+
+languages:
+- name: Spanish
+  proficiency: Limited Working
+- name: English
+  proficiency: Native or Bilingual
 
 # Interests to show in About widget
 interests:
+- AI agents for developers
 - Stats/AI/ML
 - Data infrastructure
 - Coding and development
@@ -31,12 +43,15 @@ interests:
 # Education to show in About widget
 education:
   courses:
-  - course: PhD (Statistics/ML/AI)
+  - course: Doctorate (PhD), Statistics
     institution: The University of Queensland
-    year: 2024
-  - course: BSc (Honours 1st Class, College Medal in Science)
+    year: January 2019 – April 2023
+  - course: Bachelor of Science with First Class Honours, Mathematics and Statistics
     institution: La Trobe University
-    year: 2018
+    year: 2014 – November 2018
+  - course: Bachelor of Arts, Sociology and Anthropology
+    institution: La Trobe University
+    year: 2010
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -76,32 +91,34 @@ email: "danielvfryer@gmail.com"
 highlight_name: false
 ---
 
-Hi there. What brings you to these parts? I suppose you're here because you want to know about me!
+I like finding solutions to messy problems involving data, people and technology. I have a PhD in understanding machine learning and AI models. One thing I’m especially interested in right now is helping developers use AI agents to help them focus on higher-level engineering concepts, speed up parts of their work, and grow their knowledge / push themselves more.
 
-I have expertise in software/data engineering, statistical modelling, machine learning and AI. I've worked as project lead, systems designer, developer and researcher on a variety of high-value projects.
+I think of most engineering challenges as being about choosing the right problems and reducing complexity over time.
 
-I believe one of the biggest challenges in engineering is to not overcomplicate things - to pick the right problems and strip away complexity, not add more in. It's iterative, and it's hard (or impossible?) to get it "right". The goal posts naturally shift as requirements evolve.
+Lately I think the hardest part is recognising the limits and strengths of the tools we have... as those tools are changing faster than ever!
 
-In stats and machine learning, I focus a lot on uncertainty and decision making. Most models exist to help us make better and more informed decisions.
+I'm currently leading data infrastructure work in social research. I can ship clean scalable systems as well as formal predictive or statistical models.
 
-Underneath all that modelling, infrastructure "keeps the lights on" and captures enduring business logic, dealing with data lifecycle management, observability, collection, storage, orchestration, governance, interfaces, networks, security...
+My work has included:
 
-What keeps me engaged is that I always start from the assumption that there are simple solutions to our problems. I think solutions have enough in common that we should invest considerable time in improving how we go about finding and building them.
+◈ Building a data platform that more than doubled project throughput while surviving major migrations,
 
-I also love teaching, writing courses and books. my favourite way to teach is in short workshops where I can design the full experience and all the material. I love getting to the end and knowing I've made the workshop worthwhile for the people who've attended.
+◈ Advising on company AI strategy and adoption (for large language models). This includes training and policy development,
 
-In my spare time I enjoy being a dad, surfing, good conversation, and my own coding projects - currently spending some time learning Rust, TypeScript, React and more cloud services (mostly AWS) for data engineering and generative AI.
+◈ Developing core business logic (including incentives, engagement workflows, sampling workflows, survey deployment processes, and more), and
 
-----------------------------------------------------------
+◈ Deploying predictive ML models and probabilistic algorithms (such as burden-control methods) that operate under real-world non-ideal conditions.
+
+I care about systems that are robust, maintainable, and that help people make better decisions.
+
+I also deeply enjoy teaching, especially short, focused workshops where I can design the whole experience and make it genuinely valuable for the people in the room.
+
+Outside of work I enjoy surfing, parenting and learning whatever I can get my hands on.
+
+─────────── ◈ ───────────
 
 "Uncertainty is not an accident of the scientific method, but its substance" — Andrea Saltelli.
 
 "An approximate answer to the right problem is worth a good deal more than an exact answer to an approximate problem" — John Tukey.
 
-"Whenever there is a simple error that most laymen fall for, there is always a slightly more sophisticated version of the same problem that experts fall for." - Amos Tverski
-
-----------------------------------------------------------
-
-Fill out the contact form below if you'd like to get in touch.
-
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "https://github.com/frycast/cv/raw/master/cv/cv.pdf" "newtab" >}}resumé{{< /staticref >}}.
+"Whenever there is a simple error that most laypeople fall for, there is always a slightly more sophisticated version of the same problem that experts fall for." - Amos Tverski
