@@ -54,7 +54,7 @@ test("all original publication attachments are preserved byte for byte", async (
 
 test("all biography paragraphs and publication abstracts render", async () => {
   const home = await fs.readFile("dist/index.html", "utf8");
-  const profile = await fs.readFile("content/authors/admin/_index.md", "utf8");
+  const profile = await fs.readFile("content/profile.md", "utf8");
   const body = profile.replace(/\r\n/g, "\n").split("\n---\n")[1];
   for (const paragraph of body.split("\n\n").filter((p) => /^[A-Z]/.test(p))) {
     const beginning = paragraph
@@ -102,9 +102,10 @@ test("all profile experience, education, top skills, languages, and honors are p
   const home = await fs.readFile("dist/index.html", "utf8");
   const experience = await fs.readFile("dist/experience/index.html", "utf8");
   const career = YAML.parse(await fs.readFile("data/career.yaml", "utf8"));
-  const source = (
-    await fs.readFile("content/authors/admin/_index.md", "utf8")
-  ).replace(/\r\n/g, "\n");
+  const source = (await fs.readFile("content/profile.md", "utf8")).replace(
+    /\r\n/g,
+    "\n",
+  );
   const profile = YAML.parse(source.match(/^---\n([\s\S]*?)\n---/)[1]);
   const escaped = (s) =>
     String(s)
@@ -124,7 +125,7 @@ test("all profile experience, education, top skills, languages, and honors are p
     for (const link of entry.links || [])
       assert.ok(experience.includes(link.url));
   }
-  for (const education of profile.education.courses) {
+  for (const education of profile.education) {
     for (const field of [
       education.course,
       education.institution,
@@ -151,13 +152,15 @@ test("Netlify can detect the static contact form and its success destination", a
   assert.ok(all.includes(path.join("dist", "thank-you", "index.html")));
 });
 
-test("draft legal placeholders are not published and Hugo is absent from deployment", async () => {
-  assert.ok(!all.some((f) => /(?:privacy|terms)[\\/]index\.html/.test(f)));
-  assert.doesNotMatch(await fs.readFile("netlify.toml", "utf8"), /hugo/i);
-  for (const file of pages)
-    assert.doesNotMatch(
-      (await fs.readFile(file, "utf8")).replace(/<pre>[\s\S]*?<\/pre>/g, ""),
-      /{{[<%]/,
-      file,
-    );
+test("the build publishes only the real site pages, with no stale demo routes", async () => {
+  assert.deepEqual(pages.map((file) => file.split(path.sep).join("/")).sort(), [
+    "dist/404.html",
+    "dist/experience/index.html",
+    "dist/index.html",
+    "dist/publication/confidence/index.html",
+    "dist/publication/index.html",
+    "dist/publication/shapley-axioms/index.html",
+    "dist/publication/sunnies/index.html",
+    "dist/thank-you/index.html",
+  ]);
 });

@@ -1,49 +1,24 @@
-# Redesign direction
+﻿# Site design
 
-Audience: research collaborators, students, and people looking for Danny's data science expertise. The site should introduce Danny, explain his approach, and make papers and contact easy to find. Existing content and media remain the source of truth.
+The site introduces Danny's data science work to collaborators, students, and prospective colleagues, then makes his research, experience, and contact details easy to find.
 
-## Tokens
+## Palette and type
 
 - Paper `#f5f8fc`: cool page background.
 - Ink `#182e48`: primary text.
 - Blue `#224bc3`: links and primary actions.
-- Mist `#e3ecf8`: portrait stage and quieter panels.
+- Mist `#e3ecf8`: portrait stage and secondary surfaces.
 - Slate `#52647a`: secondary text.
-- White `#ffffff`: reading surfaces.
-- Type: locally hosted Manrope for navigation and body; locally hosted Newsreader for large display text and quotations. Both retain system fallbacks.
+- White `#ffffff`: research figure backgrounds.
 
-## Layout exploration
+Locally hosted Manrope serves body text and navigation. Newsreader serves display headings. Both have system fallbacks.
 
-Option A: compact profile sidebar beside biography and a publication grid. Easy to scan, but too close to the old academic template.
+## Layout
 
-Option B (chosen): spacious introduction with an oversized name and portrait, a flowing biography with a small education column, research presented as illustrated horizontal entries, then contact. Everything is left aligned; long prose stays below 75 characters per line.
+The oversized name and portrait form the focal point. Affiliations sit beneath the introduction. The exact supplied biography pairs with education and profile details, followed by six professional disciplines, ongoing roles, illustrated publications, honors, and contact. Full career descriptions live on `/experience/`.
 
-```text
-Name                         About  Research  Contact  CV
----------------------------------------------------------
-Large name + role                  Existing portrait
-Introduction + actions             on a blue arch
-Affiliations
+Text stays left aligned and long prose has a bounded line length. Research figures use contain sizing to avoid cropping scientific content. The profile sidebar moves below the biography on phones. Navigation, research downloads, and the contact form remain usable without JavaScript; publication search is progressively enhanced.
 
-About / full biography             Interests / Education
-Skills across a quiet blue band
+## Review
 
-Research                  Search papers
-Figure | title, authors, summary, paper / citation
-Figure | title, authors, summary, paper / citation
-
-Contact details           Contact form
-Footer / academic links
-```
-
-## Review before implementation
-
-The initial sidebar option would preserve the template's visual hierarchy too closely. The chosen portrait stage gives this personal site a distinct focal point without inventing research metrics or adding decorative data visualizations. Publication images remain legible, uncropped figures. No repeated card grid, decorative numbering, or animation is needed. Keep the existing first-person writing rather than replace it with marketing copy.
-
-## Implementation principles
-
-Generate static HTML directly from the existing Markdown and YAML. Keep original files, links, PDFs, BibTeX, images, and inactive example content. Preserve public paper paths and talk paths. Netlify builds with Node; no Hugo, Go modules, or Hugo plugins are involved in the deployment. Progressive enhancement adds paper search; navigation, reading, downloads, and the Netlify contact form work without JavaScript.
-
-## Visual review
-
-Reviewed rendered Chrome screenshots at desktop and mobile sizes. The portrait and name carry the visual identity; affiliations, skills, and research are quieter. Research figures use contain sizing so scientific information is never cropped. The long biography remains fully readable, and the education column moves below it on narrow screens. Checked 1440, 768, 390, and 320 pixel widths with no horizontal overflow. All original biography paragraphs and abstracts are verified, as are attachment bytes and internal links.
+Chrome checks cover 1440, 768, 390, and 320px widths, with no horizontal overflow. Keyboard focus is visible, reduced motion is respected, and fonts are served locally. The frontend design skill is retained in `.agents/skills/frontend-design/SKILL.md`.
