@@ -24,6 +24,8 @@ Open http://127.0.0.1:4321. Restart the preview after editing. `npm run build` g
 
 `scripts/build.mjs` generates the pages. `web/styles.css` controls the appearance, and `web/site.js` adds publication search. Fonts are hosted locally, with their licenses included in the build. The repository license and requested frontend design skill are retained.
 
+The header offers Light, Dark, and Automatic themes. Automatic follows the system appearance by default; an explicit selection is remembered across visits. `web/theme.js` applies the saved choice before the first paint. Without JavaScript, the site still follows the system color scheme.
+
 [Design notes](docs/design.md) describe the layout and palette. [Profile provenance](docs/profile-update.md) records the supplied LinkedIn source and biography verification.
 
 ## Verify
