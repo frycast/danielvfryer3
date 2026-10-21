@@ -1,0 +1,20 @@
+title: Explore and learn
+intro: Courses, games and open-source tools.
+items:
+  - title: Introduction to SQL
+    kind: Course
+    description: A textbook, slides and scripts for learning SQL, with material from my four-day course.
+    url: https://github.com/frycast/SQL_course
+    action: View course materials
+
+  - title: Night Shift at Shackleton
+    kind: Game
+    description: Learn Git on a lunar base. Practise stash, cherry-pick, reset, rebase and reflog while watching the commit graph change.
+    url: https://night-shift-at-shackleton.netlify.app
+    action: Play the game
+
+  - title: rcosmo
+    kind: Software
+    description: An R package for analysing and visualising spherical, HEALPix and cosmic microwave background data.
+    url: https://github.com/frycast/rcosmo
+    action: View the package
