@@ -143,7 +143,7 @@ test("all profile experience, education, top skills, languages, and honors are p
   assert.doesNotMatch(home, /Senior Data Scientist \/ Hon\. Lecturer/);
 });
 
-test("Netlify can detect the static contact form and its success destination", async () => {
+test("the contact form includes Netlify registration fields and a generated success page", async () => {
   const home = await fs.readFile("dist/index.html", "utf8");
   assert.match(home, /name="contact" method="POST" data-netlify="true"/);
   assert.match(home, /name="form-name" value="contact"/);

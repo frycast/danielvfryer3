@@ -265,6 +265,16 @@ textarea {
   background: var(--button-hover);
   text-decoration: none;
 }
+.button:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+.contact-grid .form-status {
+  font-size: 14px;
+  color: var(--ink);
+  border-left: 3px solid var(--blue);
+  padding-left: 14px;
+}
 .text-link {
   font-size: 14px;
   font-weight: 700;
