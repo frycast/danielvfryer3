@@ -52,7 +52,7 @@ test("all original publication attachments are preserved byte for byte", async (
   }
 });
 
-test("all biography paragraphs and publication abstracts survive the migration", async () => {
+test("all biography paragraphs and publication abstracts render", async () => {
   const home = await fs.readFile("dist/index.html", "utf8");
   const profile = await fs.readFile("content/authors/admin/_index.md", "utf8");
   const body = profile.replace(/\r\n/g, "\n").split("\n---\n")[1];
@@ -81,6 +81,65 @@ test("all biography paragraphs and publication abstracts survive the migration",
     );
     assert.ok(html.includes(data.title.replace(/&/g, "&amp;")));
   }
+});
+
+test("the entire biography matches the supplied LinkedIn Summary verbatim, apart from whitespace", async () => {
+  const home = await fs.readFile("dist/index.html", "utf8");
+  const biography = home.match(/data-biography>([\s\S]*?)<\/div><aside/)[1];
+  const text = biography
+    .replace(/<[^>]+>/g, "")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, "&");
+  const original = await fs.readFile(
+    "tests/fixtures/linkedin-about.txt",
+    "utf8",
+  );
+  assert.equal(text.replace(/\s/g, ""), original.replace(/\s/g, ""));
+});
+
+test("all profile experience, education, top skills, languages, and honors are published", async () => {
+  const home = await fs.readFile("dist/index.html", "utf8");
+  const experience = await fs.readFile("dist/experience/index.html", "utf8");
+  const career = YAML.parse(await fs.readFile("data/career.yaml", "utf8"));
+  const source = (
+    await fs.readFile("content/authors/admin/_index.md", "utf8")
+  ).replace(/\r\n/g, "\n");
+  const profile = YAML.parse(source.match(/^---\n([\s\S]*?)\n---/)[1]);
+  const escaped = (s) =>
+    String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/'/g, "&#39;")
+      .replace(/"/g, "&quot;");
+  assert.equal(career.experience.length, 15);
+  assert.equal((experience.match(/class="career-entry"/g) || []).length, 15);
+  for (const entry of career.experience) {
+    for (const field of [
+      entry.organization,
+      entry.role,
+      entry.start,
+      entry.end,
+    ])
+      assert.ok(experience.includes(escaped(field)), field);
+    for (const link of entry.links || [])
+      assert.ok(experience.includes(link.url));
+  }
+  for (const education of profile.education.courses) {
+    for (const field of [
+      education.course,
+      education.institution,
+      education.year,
+    ])
+      assert.ok(home.includes(escaped(field)), String(field));
+  }
+  for (const skill of profile.top_skills)
+    assert.ok(home.includes(escaped(skill)));
+  for (const language of profile.languages)
+    assert.ok(home.includes(language.proficiency));
+  for (const honor of career.honors)
+    assert.ok(home.includes(escaped(honor.name)));
+  assert.ok(home.includes("mailto:danielvfryer@gmail.com"));
+  assert.doesNotMatch(home, /Senior Data Scientist \/ Hon\. Lecturer/);
 });
 
 test("Netlify can detect the static contact form and its success destination", async () => {

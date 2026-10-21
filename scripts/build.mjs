@@ -35,6 +35,7 @@ const params = YAML.parse(
   await fs.readFile("config/_default/params.yaml", "utf8"),
 );
 const skills = (await read("content/home/skills.md")).data.feature;
+const career = YAML.parse(await fs.readFile("data/career.yaml", "utf8"));
 const person = profile.data;
 const base = (
   (process.env.CONTEXT && process.env.CONTEXT !== "production"
@@ -157,10 +158,31 @@ function paperList() {
 function search() {
   return '<label class="search">Find a publication<input type="search" data-paper-search placeholder="Search title, author or topic" autocomplete="off"></label><p class="sr-only" data-search-status role="status"></p>';
 }
+function careerEntry(entry, compact = false) {
+  const content = compact ? entry.summary : entry.description;
+  return `<article class="career-entry"><p class="career-dates">${esc(entry.start)} – ${esc(entry.end)}</p><h3>${esc(entry.role)}</h3>${compact ? `<p class="career-organization">${esc(entry.organization)}</p>` : ""}${!compact && entry.location ? `<p class="career-location">${esc(entry.location)}</p>` : ""}${content ? `<div class="prose">${markdown(content)}</div>` : ""}${!compact && entry.links?.length ? `<div class="resource-links">${entry.links.map((link) => `<a href="${esc(link.url)}">${esc(link.name)}</a>`).join("")}</div>` : ""}</article>`;
+}
+function careerHistory() {
+  const organizations = [
+    ...new Set(career.experience.map((e) => e.organization)),
+  ];
+  return organizations
+    .map(
+      (organization) =>
+        `<section class="career-group"><h2>${esc(organization)}</h2><div>${career.experience
+          .filter((e) => e.organization === organization)
+          .map((e) => careerEntry(e))
+          .join("")}</div></section>`,
+    )
+    .join("");
+}
+function honors() {
+  return `<ul class="honors-list">${career.honors.map((h) => `<li><h3>${esc(h.name)}</h3>${h.organization || h.year ? `<p>${[h.organization, h.year].filter(Boolean).map(esc).join(", ")}</p>` : ""}${h.description ? `<p>${esc(h.description)}</p>` : ""}</li>`).join("")}</ul>`;
+}
 const routes = [];
 function layout(title, body, url = "/", description = person.bio) {
   const canonical = `${base}${url}`;
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)}${title === config.title ? "" : ` | ${esc(config.title)}`}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${canonical}"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="website"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${base}/media/sharing.jpeg"><link rel="icon" href="/media/icon.png"><link rel="stylesheet" href="/styles.css"><script src="/site.js" defer></script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header wrap"><a class="brand" href="/">Danny Fryer<span class="brand-dot" aria-hidden="true"></span></a><nav aria-label="Main navigation"><a href="/#about">About</a><a href="/#featured">Research</a><a href="/#contact">Contact</a><a class="nav-cv" href="${cv}">CV <span aria-hidden="true">↗</span></a></nav></header><main id="main">${body}</main><footer class="wrap site-footer"><a class="brand" href="/">Danny Fryer</a><p>© ${new Date().getFullYear()} Daniel Fryer</p><a href="/#main">Back to top ↑</a></footer></body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)}${title === config.title ? "" : ` | ${esc(config.title)}`}</title><meta name="description" content="${esc(description)}"><link rel="canonical" href="${canonical}"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="website"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${base}/media/sharing.jpeg"><link rel="icon" href="/media/icon.png"><link rel="stylesheet" href="/styles.css"><script src="/site.js" defer></script></head><body><a class="skip" href="#main">Skip to content</a><header class="site-header wrap"><a class="brand" href="/">Danny Fryer<span class="brand-dot" aria-hidden="true"></span></a><nav aria-label="Main navigation"><a href="/#about">About</a><a href="/experience/">Experience</a><a href="/#featured">Research</a><a href="/#contact">Contact</a><a class="nav-cv" href="${cv}">CV <span aria-hidden="true">↗</span></a></nav></header><main id="main">${body}</main><footer class="wrap site-footer"><a class="brand" href="/">Danny Fryer</a><p>© ${new Date().getFullYear()} Daniel Fryer</p><a href="/#main">Back to top ↑</a></footer></body></html>`;
 }
 async function write(url, title, body, description) {
   const destination = url.endsWith(".html")
@@ -196,9 +218,14 @@ for (const [font, weights] of [
 }
 const home = `<section class="hero wrap" id="about"><div class="hero-copy"><p class="hello">Hi there, I’m</p><h1>Danny<br>Fryer<span>.</span></h1><p class="role">${esc(person.role)}</p><p class="intro">${esc(person.bio)}</p><div class="hero-actions"><a class="button" href="#featured">Explore my research</a><a class="text-link" href="${cv}">Download CV ↗</a></div></div><div class="portrait-stage"><img class="portrait" src="/authors/admin/avatar.jpg" alt="Portrait of Dr. Danny Fryer" fetchpriority="high" width="600" height="600"><p>Data, decisions<br>& a little curiosity.</p><span class="location">${esc(params.address.city)}, ${esc(params.address.country)}</span></div></section>
 <div class="affiliations wrap" aria-label="Affiliations">${person.organizations.map((o) => (o.url ? `<a href="${esc(o.url)}">${esc(o.name)}</a>` : `<span>${esc(o.name)}</span>`)).join("")}</div>
-<section class="biography wrap section" id="biography"><div class="section-heading"><h2>A bit about me</h2><p>Engineering, research<br>and making things simpler.</p></div><div class="bio-grid"><div class="prose">${markdown(profile.content)}</div><aside class="profile-notes"><h3>What I’m interested in</h3><ul>${person.interests.map((s) => `<li>${esc(s)}</li>`).join("")}</ul><h3>Education</h3>${person.education.courses.map((e) => `<div class="education"><span>${e.year}</span><p><strong>${esc(e.course)}</strong><br>${esc(e.institution)}</p></div>`).join("")}<a class="text-link" href="${cv}">View my CV ↗</a><h3>Find me online</h3><div class="social-links">${socials()}</div></aside></div></section>
+<section class="biography wrap section" id="biography"><div class="section-heading"><h2>A bit about me</h2><p>Engineering, research<br>and making things simpler.</p></div><div class="bio-grid"><div class="prose" data-biography>${markdown(profile.content)}</div><aside class="profile-notes"><h3>Top skills</h3><ul>${person.top_skills.map((s) => `<li>${esc(s)}</li>`).join("")}</ul><h3>What I’m interested in</h3><ul>${person.interests.map((s) => `<li>${esc(s)}</li>`).join("")}</ul><h3>Education</h3>${person.education.courses.map((e) => `<div class="education"><span>${esc(e.year)}</span><p><strong>${esc(e.course)}</strong><br>${esc(e.institution)}</p></div>`).join("")}<a class="text-link" href="${cv}">View my CV ↗</a><h3>Languages</h3><ul>${person.languages.map((l) => `<li><strong>${esc(l.name)}</strong><br>${esc(l.proficiency)}</li>`).join("")}</ul><h3>Find me online</h3><div class="social-links">${socials()}</div></aside></div></section>
 <section class="skills-band" id="skills"><div class="wrap skills-inner"><h2>Tools & disciplines</h2><ul>${skills.map((s) => `<li>${s.icon_pack === "custom" ? `<img src="/media/icon-pack/${s.icon}.svg" alt="" width="26" height="26">` : ""}${esc(s.name)}</li>`).join("")}</ul></div></section>
+<section class="wrap section" id="experience"><div class="section-heading"><div><h2>Current work</h2><p>Data infrastructure, teaching and technical leadership.</p></div><a class="text-link" href="/experience/">Full experience</a></div><div class="current-work">${career.experience
+  .filter((e) => e.featured)
+  .map((e) => careerEntry(e, true))
+  .join("")}</div></section>
 <section class="wrap section research" id="featured"><div class="section-heading"><div><h2>Research & publications</h2><p>Explainable AI, Shapley values and uncertainty.</p></div><a class="text-link" href="/publication/">All publications</a></div>${paperList()}</section>
+<section class="wrap section recognition" id="recognition"><div class="section-heading"><h2>Honors & awards</h2></div>${honors()}</section>
 <section class="contact-section" id="contact"><div class="wrap contact-grid"><div><h2>Let’s get in touch.</h2><p>Fill out the form if you’d like to get in touch.</p><a class="email-link" href="mailto:${esc(params.email)}">${esc(params.email)}</a><p>${esc(params.address.city)}, ${esc(params.address.country)}</p><div class="contact-options"><a href="${esc(params.appointment_url)}">Book an appointment ↗</a>${params.contact_links.map((l) => `<a href="${esc(l.link)}">${esc(l.name)}</a>`).join("")}</div><div class="social-links">${socials()}</div></div><form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you/"><input type="hidden" name="form-name" value="contact"><p hidden><label>Leave this empty<input name="bot-field" tabindex="-1" autocomplete="off"></label></p><label>Your name<input name="name" autocomplete="name" required maxlength="200"></label><label>Email address<input type="email" name="email" autocomplete="email" required maxlength="254"></label><label>Message<textarea name="message" rows="5" required maxlength="10000"></textarea></label><button class="button" type="submit">Send message</button></form></div></section>`;
 await fs.mkdir(`${out}/authors/admin`, { recursive: true });
 await fs.copyFile(
@@ -206,6 +233,11 @@ await fs.copyFile(
   `${out}/authors/admin/avatar.jpg`,
 );
 await write("/", config.title, home);
+await write(
+  "/experience/",
+  "Experience",
+  `<section class="wrap section experience-page"><div class="section-heading"><div><h1 class="page-title">Experience</h1><p>Data infrastructure, statistics, research software and education.</p></div><a class="text-link" href="${cv}">Download CV ↗</a></div>${careerHistory()}</section>`,
+);
 await write(
   "/publication/",
   "Publications",

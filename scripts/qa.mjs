@@ -17,6 +17,16 @@ try {
     });
     await page.goto("http://127.0.0.1:4321/");
     await page.evaluate(() => document.fonts.ready);
+    const expectedBio = await fs.readFile(
+      "tests/fixtures/linkedin-about.txt",
+      "utf8",
+    );
+    assert.equal(
+      (await page.locator("[data-biography]").innerText()).replace(/\s/g, ""),
+      expectedBio.replace(/\s/g, ""),
+    );
+    assert.equal(await page.locator(".current-work .career-entry").count(), 3);
+    assert.equal(await page.locator(".education").count(), 3);
     if (width === 1440 || width === 390)
       await page.screenshot({ path: `test-results/hero-${width}.png` });
     assert.equal(await page.locator("h1").innerText(), "Danny\nFryer.");
@@ -70,16 +80,30 @@ try {
       path: `test-results/publication-${width}.png`,
       fullPage: true,
     });
+    await page.locator('nav a[href="/experience/"]').click();
+    assert.equal(await page.locator(".career-entry").count(), 15);
+    assert.ok(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
+      `Experience overflows at ${width}`,
+    );
+    await page.screenshot({
+      path: `test-results/experience-${width}.png`,
+      fullPage: true,
+    });
     await page.close();
   }
   const noJS = await browser.newPage({ javaScriptEnabled: false });
   await noJS.goto("http://127.0.0.1:4321/");
   assert.equal(await noJS.locator(".paper").count(), 3);
   assert.ok(await noJS.locator("form").isVisible());
+  await noJS.locator('nav a[href="/experience/"]').click();
+  assert.equal(await noJS.locator(".career-entry").count(), 15);
   await noJS.close();
   assert.deepEqual(failures, []);
   console.log(
-    "Browser QA passed at 1440, 768, 390, and 320px: images, overflow, navigation, search, form validation, and no-JS content.",
+    "Browser QA passed at 1440, 768, 390, and 320px: exact biography, experience, images, overflow, navigation, search, form validation, and no-JS content.",
   );
 } finally {
   await browser.close();

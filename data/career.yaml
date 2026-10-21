@@ -1,0 +1,188 @@
+# Transcribed from the LinkedIn profile PDF supplied by Danny on 21 October 2026.
+# Dates are the explicit month/year ranges, not the export's relative durations.
+experience:
+  - organization: The Social Research Centre
+    role: Senior Data Scientist (Data Infrastructure)
+    start: June 2023
+    end: Present
+    featured: true
+    summary: Led the design and delivery of a multi-system data integration and analytics platform, doubling system throughput and ensuring stability through three major infrastructure migrations, while acting as the technical link between engineering, operations, and executive stakeholders.
+    description: |
+      Led the design and delivery of a multi-system data integration and analytics platform, doubling system throughput and ensuring stability through three major infrastructure migrations, while acting as the technical link between engineering, operations, and executive stakeholders. Owned operationally critical logic across systems (e.g. unsubscribe flows, financial incentive rules, failed redirect recovery, member portal experience) and built custom interfaces to close workflow gaps. Delivered a production propensity model to predict participant completion, gaining first-hand insight into intervention feedback loops and the complexity of deploying ML in live systems. Also developed and maintained reporting infrastructure (Power BI models, Shiny dashboards, SQL data models) and guided platform roadmap in collaboration with execs.
+
+  - organization: The Social Research Centre
+    role: Data Scientist
+    start: August 2021
+    end: June 2023
+    location: Melbourne, Victoria, Australia
+
+  - organization: La Trobe University
+    role: Adjunct Lecturer
+    start: December 2023
+    end: Present
+    location: Melbourne, Victoria, Australia
+    featured: true
+    summary: Honorary position in recognition of professional and academic standing within the university
+    description: Honorary position in recognition of professional and academic standing within the university
+
+  - organization: La Trobe University
+    role: Associate Lecturer
+    start: January 2023
+    end: December 2023
+    description: |
+      Associate Lecturer and Associate Fellow of the Higher Education Academy (AFHEA), responsible for designing and delivering undergraduate subjects in statistics and data science, including Probability for Statistics and Data Science and Meta-Analysis (STM4PDS, STA5MA). Led subject coordination, curriculum development, and creative strategies to boost engagement, confidence, and deep learning. Developed technically rigorous, accessible assessments and materials—bridging theoretical understanding with real-world data applications. Regularly integrate contemporary research and best practices in teaching, contributing to academic networks and pedagogical innovation.
+
+  - organization: La Trobe University
+    role: Sessional Lecturer
+    start: July 2018
+    end: January 2023
+    location: Melbourne, Australia
+    description: |
+      Recipient of the Vice-Chancellor's Sessional Teaching Award 2020.
+
+      Subjects:
+      - Meta-Analysis (Master's)
+      - Applied Statistical Methods (Undergraduate)
+      - Linear Models (Undergraduate)
+
+      Tools and techniques: R, RevMan, Metafor, reviewing published meta-analysis to assess scientific evidence, detect and explain heterogeneity via techniques such as subgroup analysis and meta-regression.
+
+      Subject codes: STA5MA, STA3ASM, STA3LM.
+
+  - organization: La Trobe University
+    role: Instructor - Databases (Masters)
+    start: March 2018
+    end: January 2022
+    location: Bundoora
+    description: |
+      Tools: PL/SQL, Oracle SQLPlus, Extended Entity Relationship (EER) modelling for relational database design, normalization.
+
+      - Teaching hands-on material to over 150 students in five two-hour labs p/w.
+      - Fast-paced help sessions, debugging individual code for 40+ students in one hour (what a rush!).
+      - Create and review SQL and database design assignments.
+      - Mark roughly 400 student assignments per semester.
+
+      Subject codes: CSE2DBF and CSE4DBF
+
+  - organization: La Trobe University
+    role: Research Software Developer
+    start: June 2018
+    end: February 2019
+    location: Melbourne, Australia
+    description: |
+      Lead developer and maintainer of R package 'rcosmo' for analysis of cosmological data.
+
+      Highly Commended at the Australian Astrostatistics Association 2020 awards.
+
+      - Published on the Comprehensive R Archive Network (CRAN).
+      - Over 13,000 downloads on CRAN (with currently over 150 per week).
+      - Manuscript published in the R Journal.
+      - Funded in part by an Australian government research grant.
+    links:
+      - name: rcosmo on CRAN
+        url: https://cran.r-project.org/web/packages/rcosmo/index.html
+
+  - organization: La Trobe University
+    role: Tutor - Engineering Statistics
+    start: June 2018
+    end: January 2019
+    description: |
+      Probability and statistics applied to engineering problems.
+
+      Subject code: STM2EPS
+
+  - organization: The University of Auckland
+    role: Course Instructor
+    start: November 2018
+    end: Present
+    location: Auckland, New Zealand
+    featured: true
+    summary: Instructor and course author for the New Zealand Social Statistics Network at the University of Auckland, delivering a four-day intensive course on SQL and the Integrated Data Infrastructure (IDI).
+    description: |
+      Instructor and course author for the New Zealand Social Statistics Network at the University of Auckland, delivering a four-day intensive course on SQL and the Integrated Data Infrastructure (IDI). Delivered the course over 14 times to academic and professional audiences in government, research, and social science. Wrote the accompanying course textbook, designed for clarity, accessibility, and real-world data application. Consistently achieved 5-star student experience ratings. Strong focus on empowering non-technical professionals to work effectively with complex data systems, query design, and relational thinking—experience that informs my broader interest in technical enablement, infrastructure, and education.
+
+  - organization: Monash University
+    role: Research Statistician
+    start: October 2020
+    end: January 2022
+    location: Australia
+    description: |
+      Statistical consulting / contract work on survey design and analysis, in Politics and International Relations.
+
+      Project: Mobilising Insights in Defence and Security (MINDS) study, Canada, with Prof Maria Rost Rublee.
+
+  - organization: The University of Queensland
+    role: Research Statistician
+    start: January 2019
+    end: January 2022
+    location: Brisbane, Australia
+    description: |
+      Project 2: May 2021
+
+      In partnership with the Nuffield Department of Medicine, University of Oxford, International Severe Acute Respiratory and Emerging Infection Consortium (ISARIC). Testing and developing algorithms for diagnosing acute kidney injury and acute kidney disease, using serum creatinine levels, in a global observational study.
+
+      Publication outcomes:
+
+      1. ISARIC Clinical Characterization Group., Garcia-Gallo, E., Merson, L. et al. ISARIC-COVID-19 dataset: A Prospective, Standardized, Global Dataset of Patients Hospitalized with COVID-19. Sci Data 9, 454 (2022).
+      2. Wainstein M, MacDonald S, Fryer D, Young K, Balan V, et al. (2022) Use of an extended KDIGO definition to diagnose acute kidney injury in patients with COVID-19: A multinational study using the ISARIC–WHO clinical characterisation protocol. PLOS Medicine 19(4): e1003969.
+
+      Project 1: April 2019.
+
+      In collaboration with the University of Montreal, Canada. Exploring models for transdiagnostic clustering of digital phenotypes for predicting clinical psychiatric prognoses from passive sensing with smart-phones. Developed the R package 'studentlife' for tidy handling, navigation and exploratory data analysis of a valuable mobile-health data set. Published associated bulletin in the Journal of Open Source Software.
+    links:
+      - name: ISARIC-COVID-19 dataset publication
+        url: https://doi.org/10.1038/s41597-022-01534-9
+      - name: Acute kidney injury publication
+        url: https://doi.org/10.1371/journal.pmed.1003969
+
+  - organization: The University of Queensland
+    role: Data Science Support
+    start: August 2020
+    end: January 2021
+    location: Australia
+    description: |
+      Support / drop-in sessions for students on their capstone data science project: an open-ended project for star students to demonstrate and hone their data science stack.
+
+      Master's of Data Science Capstone Project DATA7901 and DATA7903.
+
+  - organization: Campus Consultancy
+    role: Senior Mentor, Founding Member
+    start: August 2017
+    end: January 2019
+    location: Melbourne, Australia
+    description: A network of individuals with executive leadership experience in university clubs and societies. As a Senior Mentor I was available to pass on lessons-learned from my own challenges and successes in leadership.
+
+  - organization: Australian Mathematical Sciences Institute
+    role: Summer Research Scholarship
+    start: December 2016
+    end: February 2017
+    location: Melbourne, Australia
+    description: |
+      Research paper and conference presentation + fun networking with some of Australia's brightest maths and stats students.
+
+      My project investigated the asymptotic properties of functionals of long range dependent random fields and processes.
+    links:
+      - name: Research project
+        url: http://vrs.amsi.org.au/daniel-vidali-fryer-2017/
+
+  - organization: Seastar Cruises
+    role: Rescue Diver
+    start: January 2012
+    end: December 2012
+    location: Cairns, Queensland, Australia
+    description: Providing safety and emergency response for recreational divers touring the great barrier reef.
+
+honors:
+  - name: Vice-Chancellor's Sessional Teaching Award
+    organization: La Trobe University
+    year: "2020"
+  - name: Highly Commended, Australian Astrostatistics Association awards
+    organization: Australian Astrostatistics Association
+    year: "2020"
+    description: For the rcosmo research software.
+  - name: La Trobe Award in Community Engagement
+  - name: Professor Jim Morrison Prize for Chemistry 1
+  - name: Professor Jim Morrison Prize for Chemistry 2
+  - name: 4 x Pro Vice Chancellor's Commendation
+    year: 2014, 2015, 2016 and 2017
+  - name: Professor CJ Eliezer Prize in Second Year Mathematics

@@ -17,6 +17,7 @@ Open http://127.0.0.1:4321. Restart the preview after editing content or templat
 
 - `content/authors/admin/_index.md`: biography, role, affiliations, interests, education, and profile links.
 - `content/authors/admin/avatar.jpg`: portrait.
+- `data/career.yaml`: complete experience history and honors from the supplied LinkedIn profile. The homepage highlights ongoing roles; `/experience/` shows all roles and descriptions.
 - `content/home/skills.md`: tools and disciplines.
 - `content/publication/<slug>/index.md`: publication metadata, summary, abstract, and body. Put figures, PDFs, and BibTeX files alongside it. Existing publication URLs are preserved.
 - `config/_default/params.yaml`: email, location, appointment URL, and contact links.
@@ -38,7 +39,7 @@ npm run dev
 npm run test:browser
 ```
 
-The content checks verify internal URLs and anchors, byte-for-byte publication attachments, biography and abstracts, draft exclusion, and the Netlify form markup. Browser checks cover desktop, tablet, narrow phones, publication search, form validation, image loading, and navigation. Screenshots go to ignored `test-results/`. The form is validated locally without sending a message.
+The content checks verify internal URLs and anchors, byte-for-byte publication attachments, biography and abstracts, draft exclusion, and the Netlify form markup. The complete biography is compared against the extracted LinkedIn Summary, ignoring whitespace only, and checks cover all 15 roles, education, top skills, languages, and honors. Browser checks cover desktop, tablet, narrow phones, publication search, form validation, image loading, navigation, and the full experience page. Screenshots go to ignored `test-results/`. The form is validated locally without sending a message.
 
 ## Netlify deployment
 
