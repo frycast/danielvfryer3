@@ -84,6 +84,38 @@ try {
       await page.screenshot({ path: `test-results/hero-${width}.png` });
     assert.equal(await page.locator("h1").innerText(), "Danny\nFryer.");
     assert.equal(await page.locator(".paper").count(), 3);
+    const exploreButton = page.getByRole("link", {
+      name: "Explore and learn",
+      exact: true,
+    });
+    await expect(exploreButton).toHaveAttribute("href", "#explore");
+    await exploreButton.click();
+    await expect(page.locator("#explore-title")).toBeInViewport();
+    for (const [name, href] of [
+      [
+        "View course materials: Introduction to SQL",
+        "https://github.com/frycast/SQL_course",
+      ],
+      [
+        "Play the game: Night Shift at Shackleton",
+        "https://night-shift-at-shackleton.netlify.app",
+      ],
+      ["View the package: rcosmo", "https://github.com/frycast/rcosmo"],
+    ]) {
+      await expect(
+        page.getByRole("link", { name, exact: true }),
+      ).toHaveAttribute("href", href);
+    }
+    if (width === 1440 || width === 390) {
+      await page
+        .locator("#explore")
+        .screenshot({ path: `test-results/explore-${width}.png` });
+      await page.getByLabel("Color theme").selectOption("dark");
+      await page
+        .locator("#explore")
+        .screenshot({ path: `test-results/explore-dark-${width}.png` });
+      await page.getByLabel("Color theme").selectOption("automatic");
+    }
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
@@ -221,7 +253,7 @@ try {
   await restricted.close();
   assert.deepEqual(failures, []);
   console.log(
-    "Browser QA passed at 1440, 768, 390, and 320px: themes, profile, images, navigation, search, form failure/retry/success, and no-JS content. No live messages sent.",
+    "Browser QA passed at 1440, 768, 390, and 320px: Explore and learn button and destinations, themes, profile, images, navigation, search, form failure/retry/success, and no-JS content. No live messages sent.",
   );
 } finally {
   await browser.close();
