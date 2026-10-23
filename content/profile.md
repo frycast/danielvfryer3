@@ -1,7 +1,7 @@
 ---
 title: Danny Fryer, PhD
 role: Senior Data Scientist (Data Infrastructure) & Adjunct Lecturer
-bio: I like finding solutions to messy problems involving data, people and technology. I have a PhD in understanding machine learning and AI models.
+bio: Raising the bar on quality and efficiency in Australian social research.
 organizations:
   - name: The Social Research Centre
     url: https://srcentre.com.au/
